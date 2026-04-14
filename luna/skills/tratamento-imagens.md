@@ -55,12 +55,13 @@ Imagem recebida
 
 ### Fase 2 — Remoção de Fundo
 
-**Via Pixa MCP:**
+**Via Sharp (Node.js) + GPT-image:**
 ```javascript
 // Remover fundo de imagem
-const result = await pixa.edit_image({
+// Via Sharp ou GPT-image na VPS
+const result = await sharp(inputPath).
   action: "remove_background",
-  image: assetId  // ID do asset no Pixa ou URL da imagem
+  image: assetId  // URL da imagem ou path local
 });
 // result.asset_id → novo asset sem fundo
 // result.url → URL da imagem processada
@@ -86,17 +87,19 @@ const result = await pixa.edit_image({
 
 ### Fase 3 — Upscale (Aumento de Resolução)
 
-**Via Pixa MCP:**
+**Via Sharp (Node.js) + GPT-image:**
 ```javascript
 // Upscale 2x (dobra a resolução)
-const result = await pixa.edit_image({
+// Via Sharp ou GPT-image na VPS
+const result = await sharp(inputPath).
   action: "upscale",
   image: assetId,
   scale: "2"    // "2" ou "4"
 });
 
 // Upscale 4x (quadruplica — usar com cuidado, pode gerar artefatos)
-const result = await pixa.edit_image({
+// Via Sharp ou GPT-image na VPS
+const result = await sharp(inputPath).
   action: "upscale",
   image: assetId,
   scale: "4"
@@ -157,17 +160,19 @@ await sharp(inputPath)
 
 ### Fase 5 — Expand / Outpainting
 
-**Via Pixa MCP:**
+**Via Sharp (Node.js) + GPT-image:**
 ```javascript
 // Expandir para proporção 4:5 (IA preenche as bordas)
-const result = await pixa.edit_image({
+// Via Sharp ou GPT-image na VPS
+const result = await sharp(inputPath).
   action: "expand",
   image: assetId,
   aspect_ratio: "4:5"   // "1:1", "9:16", "16:9"
 });
 
 // Expandir com pixels específicos em cada direção
-const result = await pixa.edit_image({
+// Via Sharp ou GPT-image na VPS
+const result = await sharp(inputPath).
   action: "expand",
   image: assetId,
   top: 200,     // pixels a expandir em cima
@@ -267,8 +272,8 @@ WHERE id = $1;
 - [ ] Asset pronto comunicado ao solicitante (Nina, Diego, Carla)
 
 ## Integrações
-- **Nano Banana / Pixa MCP** — `remove_background`, `upscale`, `expand` (edição de imagem)
-- **OpenAI API (GPT-image)** — edição avançada quando Pixa não resolve (máscara, composição)
+- **Sharp (Node.js) — remove_background, resize, crop, composição
+- **OpenAI (GPT-image) — edição avançada, outpainting, composição complexa (via assinatura OAuth)
 - **Supabase Storage** — upload de assets tratados
 - **Supabase (media_assets)** — atualização de tags, metadados, referência ao original
 - **Sharp (Node.js)** — crop, resize, conversão de formato em pipeline

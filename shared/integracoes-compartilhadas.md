@@ -60,9 +60,9 @@ Todos os agentes do Escritório de Marketing têm acesso às integrações abaix
 - **Acesso:** Assinatura de $100
 - **Uso:** Raciocínio, planejamento, geração e edição de imagens
 
-### Gemini / Pixa (Google)
-- **Modelos:** Nano Banana 2 (imagens em volume) / Imagen 4 (fotorealismo)
-- **Acesso:** API key (Google AI Studio) / Pixa MCP
+### Google Gemini API
+- **Modelos:** Imagen 3 (imagens em volume) / Imagen 4 (fotorealismo)
+- **Acesso:** API key (Google AI Studio) — GEMINI_API_KEY no .env
 - **Uso:** Geração de imagens em volume com custo baixo
 
 ### Princípio de distribuição

@@ -34,7 +34,7 @@ description: Skill para organizar, taguear, catalogar e manter o banco de assets
 | **marca** | `la-music-school`, `la-music-kids`, `sonoramente`, `grupo` | `la-music-school` |
 | **tipo** | `foto`, `ilustracao`, `background`, `elemento`, `logo`, `icone`, `video`, `gif` | `foto` |
 | **instrumento** | `guitarra`, `piano`, `bateria`, `violao`, `ukulele`, `voz`, `xilofone`, `percussao`, `geral` | `guitarra` |
-| **modelo_ia** | `nano-banana-2`, `gpt-image`, `imagen-4`, `flux-2`, `humano` | `nano-banana-2` |
+| **modelo_ia** | `imagen-3`, `gpt-image`, `imagen-4`, `humano` | `imagen-3` |
 | **uso** | `carrossel`, `story`, `reel`, `newsletter`, `post`, `campanha`, `geral` | `carrossel` |
 | **tratamento** | `original`, `sem-fundo`, `upscale`, `expand`, `editado` | `sem-fundo` |
 | **status** | `disponível`, `em-uso`, `arquivado`, `descartado` | `disponível` |
@@ -265,5 +265,5 @@ ORDER BY brand, total ASC;
 - **Supabase Storage** — armazenamento físico dos arquivos de imagem/vídeo
 - **Supabase (media_assets)** — catalogação, tags, busca, metadados
 - **Supabase (outputs)** — referência cruzada de quais outputs usam quais assets
-- **Nano Banana / Pixa MCP** — collections para organização visual de assets
-- **Pixa MCP (assets)** — gerenciamento de assets no Pixa (upload, metadata)
+- **Google Gemini API — geração de imagens (Imagen 3/4) via GEMINI_API_KEY
+- **OpenAI (GPT-image) — geração e edição de imagens via assinatura OAuth
