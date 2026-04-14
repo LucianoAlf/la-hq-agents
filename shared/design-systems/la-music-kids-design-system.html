@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System — LA Music Kids</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --amarelo: #FFF212;
+  --verde: #17B255;
+  --azul: #00AFEF;
+  --vermelho: #ED3237;
+  --preto: #1A1A1A;
+  --preto-card: #222222;
+  --branco: #FFFFFF;
+  --cinza-700: #444444;
+  --cinza-500: #777777;
+  --cinza-300: #CCCCCC;
+  --cinza-100: #F5F5F5;
+  --creme: #FFFEF5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; color: var(--preto); background: var(--branco); }
+
+.page { min-height: 100vh; padding: 80px 60px; position: relative; overflow: hidden; }
+.page-white { background: var(--branco); }
+.page-dark { background: var(--preto); color: white; }
+.page-azul { background: var(--azul); color: white; }
+.page-amarelo { background: var(--amarelo); color: var(--preto); }
+
+.section-num { font-family: 'Baloo 2', cursive; font-size: 120px; font-weight: 800; line-height: 1; margin-bottom: -10px; }
+.page-white .section-num { color: var(--cinza-100); }
+.page-dark .section-num { color: rgba(255,255,255,0.08); }
+.page-azul .section-num { color: rgba(255,255,255,0.15); }
+.page-amarelo .section-num { color: rgba(0,0,0,0.06); }
+
+.section-label { font-size: 12px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+.section-label::before { content: ''; width: 32px; height: 3px; border-radius: 2px; }
+.page-white .section-label { color: var(--azul); }
+.page-white .section-label::before { background: var(--azul); }
+.page-dark .section-label { color: var(--amarelo); }
+.page-dark .section-label::before { background: var(--amarelo); }
+.page-azul .section-label { color: var(--amarelo); }
+.page-azul .section-label::before { background: var(--amarelo); }
+.page-amarelo .section-label { color: var(--vermelho); }
+.page-amarelo .section-label::before { background: var(--vermelho); }
+
+.section-title { font-family: 'Baloo 2', cursive; font-size: clamp(36px, 5vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.section-title em { font-style: normal; }
+.page-white .section-title { color: var(--preto); }
+.page-white .section-title em { color: var(--azul); }
+.page-dark .section-title { color: white; }
+.page-dark .section-title em { color: var(--amarelo); }
+.page-azul .section-title em { color: var(--amarelo); }
+.page-amarelo .section-title em { color: var(--vermelho); }
+
+.section-desc { font-size: 17px; line-height: 1.7; max-width: 680px; margin-bottom: 48px; }
+.page-white .section-desc { color: var(--cinza-700); }
+.page-dark .section-desc { color: rgba(255,255,255,0.7); }
+.page-azul .section-desc { color: rgba(255,255,255,0.85); }
+
+/* Cover */
+.cover { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 100vh; background: var(--branco); padding: 60px; position: relative; overflow: hidden; }
+.cover-waves { position: absolute; top: 0; right: -100px; width: 500px; height: 100%; z-index: 0; }
+.cover-wave { position: absolute; border-radius: 50%; }
+.cover-wave-1 { background: var(--amarelo); width: 400px; height: 400px; top: -50px; right: -50px; }
+.cover-wave-2 { background: var(--verde); width: 380px; height: 380px; top: 100px; right: -30px; }
+.cover-wave-3 { background: var(--azul); width: 360px; height: 360px; top: 250px; right: -10px; }
+.cover-wave-4 { background: var(--vermelho); width: 340px; height: 340px; top: 400px; right: 10px; }
+.cover-content { position: relative; z-index: 1; }
+.cover-label { font-size: 11px; letter-spacing: 6px; text-transform: uppercase; color: var(--cinza-500); margin-bottom: 16px; }
+.cover-brand { font-family: 'Baloo 2', cursive; font-size: clamp(48px, 8vw, 80px); font-weight: 800; color: var(--preto); margin-bottom: 4px; }
+.cover-brand span { color: var(--azul); }
+.cover-tagline { font-family: 'Baloo 2', cursive; font-size: clamp(16px, 2.5vw, 22px); font-weight: 500; color: var(--cinza-500); margin-bottom: 40px; font-style: italic; }
+.cover-meta { font-size: 11px; letter-spacing: 3px; color: var(--cinza-300); text-transform: uppercase; }
+.cover-dots { display: flex; gap: 8px; justify-content: center; margin: 32px 0; }
+.cover-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+/* Color cards */
+.colors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 48px; }
+.color-card { border-radius: 20px; overflow: hidden; background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.color-swatch { height: 120px; }
+.color-info { padding: 16px 18px; }
+.color-name { font-family: 'Baloo 2', cursive; font-size: 16px; font-weight: 700; color: var(--preto); margin-bottom: 2px; }
+.color-hex { font-size: 13px; color: var(--cinza-500); font-family: monospace; letter-spacing: 1px; }
+.color-uso { font-size: 11px; color: var(--cinza-300); margin-top: 4px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+/* Typography */
+.tipo-block { background: white; border-radius: 20px; padding: 40px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.page-dark .tipo-block { background: var(--preto-card); box-shadow: none; border: 1px solid rgba(255,255,255,0.1); }
+.tipo-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--azul); margin-bottom: 16px; }
+.page-dark .tipo-label { color: var(--amarelo); }
+.tipo-sizes { margin-top: 24px; }
+.tipo-size { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--cinza-100); }
+.page-dark .tipo-size { border-color: rgba(255,255,255,0.1); }
+.tipo-size:last-child { border-bottom: none; }
+.tipo-size-label { font-size: 11px; color: var(--azul); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+.page-dark .tipo-size-label { color: var(--amarelo); }
+
+/* Themes */
+.themes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.theme-card { border-radius: 20px; padding: 40px; min-height: 220px; display: flex; flex-direction: column; justify-content: flex-end; }
+.theme-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+.theme-title { font-family: 'Baloo 2', cursive; font-size: 28px; font-weight: 800; margin-bottom: 10px; }
+.theme-desc { font-size: 14px; opacity: 0.8; max-width: 360px; line-height: 1.5; }
+.theme-white { background: white; color: var(--preto); border: 2px solid var(--cinza-100); }
+.theme-white .theme-label { color: var(--azul); }
+.theme-dark { background: var(--preto); color: white; }
+.theme-dark .theme-label { color: var(--amarelo); }
+.theme-azul { background: var(--azul); color: white; grid-column: 1 / -1; text-align: center; align-items: center; }
+.theme-azul .theme-label { color: var(--amarelo); }
+
+/* Components */
+.comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.comp-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.comp-preview { padding: 32px; min-height: 160px; display: flex; align-items: center; justify-content: center; }
+.comp-desc { padding: 20px; }
+.comp-desc h4 { font-family: 'Baloo 2', cursive; font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.comp-desc p { font-size: 13px; color: var(--cinza-500); line-height: 1.5; }
+
+/* Buttons */
+.btn-kids { border: none; padding: 14px 32px; border-radius: 50px; font-family: 'Baloo 2', cursive; font-size: 16px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+.btn-azul { background: var(--azul); color: white; }
+.btn-vermelho { background: var(--vermelho); color: white; }
+.btn-verde { background: var(--verde); color: white; }
+.btn-amarelo { background: var(--amarelo); color: var(--preto); }
+.btn-outline { background: transparent; border: 2px solid white; color: white; }
+.btn-outline-dark { background: transparent; border: 2px solid var(--preto); color: var(--preto); }
+
+/* Tom de voz */
+.tom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tom-item { padding: 20px; border-radius: 16px; display: flex; gap: 14px; align-items: flex-start; }
+.tom-sim { background: #F0FFF4; }
+.tom-nao { background: #FFF0F0; }
+.tom-badge { font-size: 11px; font-weight: 800; letter-spacing: 2px; padding: 4px 12px; border-radius: 20px; color: white; white-space: nowrap; }
+.tom-sim .tom-badge { background: var(--verde); }
+.tom-nao .tom-badge { background: var(--vermelho); }
+.tom-texto { font-size: 14px; color: var(--cinza-700); line-height: 1.5; }
+.tom-texto strong { color: var(--preto); }
+
+/* Tokens */
+.tokens-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.tokens-table th { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--amarelo); text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--amarelo); }
+.tokens-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: rgba(255,255,255,0.85); }
+.tokens-table td:first-child { font-family: monospace; color: var(--amarelo); font-size: 13px; }
+.token-swatch { width: 24px; height: 24px; border-radius: 8px; display: inline-block; vertical-align: middle; margin-right: 8px; }
+
+/* Rules */
+.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.rule-card { background: white; border-radius: 20px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.rule-icon { font-size: 32px; margin-bottom: 12px; }
+.rule-title { font-family: 'Baloo 2', cursive; font-size: 17px; font-weight: 700; color: var(--preto); margin-bottom: 8px; }
+.rule-text { font-size: 14px; color: var(--cinza-500); line-height: 1.6; }
+
+/* Do/Don't */
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+.do-list, .dont-list { padding: 24px; border-radius: 16px; }
+.do-list { background: #F0FFF4; border: 2px solid rgba(23,178,85,0.2); }
+.dont-list { background: #FFF0F0; border: 2px solid rgba(237,50,55,0.2); }
+.do-list h4 { color: var(--verde); font-family: 'Baloo 2', cursive; font-size: 15px; margin-bottom: 16px; }
+.dont-list h4 { color: var(--vermelho); font-family: 'Baloo 2', cursive; font-size: 15px; margin-bottom: 16px; }
+.check-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; font-size: 14px; color: var(--cinza-700); }
+
+/* Waves decoration */
+.wave-bar { height: 8px; display: flex; margin: 0; }
+.wave-bar div { flex: 1; }
+
+/* Footer */
+.footer { text-align: center; padding: 60px; background: var(--preto); color: rgba(255,255,255,0.4); font-size: 12px; letter-spacing: 2px; }
+.footer-brand { font-family: 'Baloo 2', cursive; font-size: 28px; font-weight: 800; color: white; margin-bottom: 8px; }
+.footer-tagline { font-style: italic; color: rgba(255,255,255,0.5); margin-bottom: 20px; font-size: 14px; }
+
+@media (max-width: 768px) {
+  .page { padding: 40px 24px; }
+  .themes-grid, .comp-grid, .rules-grid, .do-dont, .tom-grid { grid-template-columns: 1fr; }
+  .theme-azul { grid-column: 1; }
+  .section-num { font-size: 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- WAVE BAR TOP -->
+<div class="wave-bar">
+  <div style="background: var(--amarelo);"></div>
+  <div style="background: var(--verde);"></div>
+  <div style="background: var(--azul);"></div>
+  <div style="background: var(--vermelho);"></div>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-waves">
+    <div class="cover-wave cover-wave-1"></div>
+    <div class="cover-wave cover-wave-2"></div>
+    <div class="cover-wave cover-wave-3"></div>
+    <div class="cover-wave cover-wave-4"></div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-label">D E S I G N&nbsp;&nbsp;&nbsp;S Y S T E M</div>
+    <div class="cover-brand">LA Music <span>Kids</span></div>
+    <div class="cover-tagline">música não é só pra gente grande</div>
+    <div class="cover-dots">
+      <div class="cover-dot" style="background: var(--amarelo);"></div>
+      <div class="cover-dot" style="background: var(--verde);"></div>
+      <div class="cover-dot" style="background: var(--azul);"></div>
+      <div class="cover-dot" style="background: var(--vermelho);"></div>
+    </div>
+    <div class="cover-meta">Identidade visual · Tipografia · Paleta · Componentes · Regras de uso</div>
+    <div style="margin-top: 60px;" class="cover-meta">L A&nbsp;&nbsp;M U S I C&nbsp;&nbsp;K I D S&nbsp;&nbsp;v1.0 — Abril 2026</div>
+  </div>
+</div>
+
+<div class="wave-bar"><div style="background: var(--amarelo);"></div><div style="background: var(--verde);"></div><div style="background: var(--azul);"></div><div style="background: var(--vermelho);"></div></div>
+
+<!-- 01 — CORES -->
+<div class="page page-white">
+  <div class="section-num">01</div>
+  <div class="section-label">CORES</div>
+  <div class="section-title">Paleta <em>Primária</em></div>
+  <div class="section-desc">A identidade da LA Music Kids é construída sobre quatro cores vibrantes — amarelo, verde, azul e vermelho — derivadas do catavento/palheta do logo. São cores primárias, puras e alegres, que transmitem energia, diversão e movimento.</div>
+
+  <h3 style="font-size: 11px; letter-spacing: 3px; color: var(--cinza-500); margin-bottom: 20px; text-transform: uppercase; font-weight: 700;">Cores do Catavento</h3>
+  <div class="colors-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: var(--amarelo);"></div>
+      <div class="color-info"><div class="color-name">Amarelo</div><div class="color-hex">#FFF212</div><div class="color-uso">ENERGIA · DESTAQUE · FUNDOS</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: var(--verde);"></div>
+      <div class="color-info"><div class="color-name">Verde</div><div class="color-hex">#17B255</div><div class="color-uso">NATUREZA · CRESCIMENTO · SUCESSO</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: var(--azul);"></div>
+      <div class="color-info"><div class="color-name">Azul</div><div class="color-hex">#00AFEF</div><div class="color-uso">CONFIANÇA · PRINCIPAL · CTA</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: var(--vermelho);"></div>
+      <div class="color-info"><div class="color-name">Vermelho</div><div class="color-hex">#ED3237</div><div class="color-uso">PAIXÃO · AÇÃO · ÊNFASE</div></div>
+    </div>
+  </div>
+
+  <h3 style="font-size: 11px; letter-spacing: 3px; color: var(--cinza-500); margin-bottom: 20px; text-transform: uppercase; font-weight: 700;">Neutros e Base</h3>
+  <div class="colors-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: var(--preto);"></div>
+      <div class="color-info"><div class="color-name">Preto</div><div class="color-hex">#1A1A1A</div><div class="color-uso">TEXTO · FUNDOS ESCUROS</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: var(--cinza-500);"></div>
+      <div class="color-info"><div class="color-name">Cinza</div><div class="color-hex">#777777</div><div class="color-uso">CORPO DE TEXTO</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: var(--branco); border: 1px solid #EEE;"></div>
+      <div class="color-info"><div class="color-name">Branco</div><div class="color-hex">#FFFFFF</div><div class="color-uso">FUNDO PRINCIPAL · CARDS</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: var(--creme);"></div>
+      <div class="color-info"><div class="color-name">Creme</div><div class="color-hex">#FFFEF5</div><div class="color-uso">FUNDO ALTERNATIVO · SUAVIDADE</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 — TIPOGRAFIA -->
+<div class="page page-dark">
+  <div class="section-num">02</div>
+  <div class="section-label">TIPOGRAFIA</div>
+  <div class="section-title">Hierarquia <em>Tipográfica</em></div>
+  <div class="section-desc">A tipografia da LA Music Kids é arredondada e amigável. Títulos usam uma fonte bold e divertida que transmite energia infantil sem perder profissionalismo. O corpo usa uma sans-serif limpa e legível para os pais.</div>
+
+  <div class="tipo-block">
+    <div class="tipo-label">DISPLAY · TÍTULOS · HEADLINES</div>
+    <div style="font-family: 'Baloo 2', cursive; font-size: 48px; font-weight: 800; color: var(--azul); margin-bottom: 8px;">Baloo 2</div>
+    <div style="font-family: 'Baloo 2', cursive; font-size: 14px; color: var(--cinza-500); margin-bottom: 16px;">Alternativa web para Fiston Soft Heavy. Arredondada, bold, divertida e legível.</div>
+
+    <div class="tipo-sizes">
+      <div class="tipo-size">
+        <div class="tipo-size-label">HERO / 48–64PX</div>
+        <div style="font-family: 'Baloo 2', cursive; font-size: 48px; font-weight: 800; color: white; line-height: 1.1;">Música pra Gente Pequena!</div>
+      </div>
+      <div class="tipo-size">
+        <div class="tipo-size-label">H1 / 36–44PX</div>
+        <div style="font-family: 'Baloo 2', cursive; font-size: 36px; font-weight: 800; color: white; line-height: 1.15;">Aprender é se Divertir</div>
+      </div>
+      <div class="tipo-size">
+        <div class="tipo-size-label">H2 / 24–32PX</div>
+        <div style="font-family: 'Baloo 2', cursive; font-size: 24px; font-weight: 700; color: white; line-height: 1.2;">Ritmo, Melodia e Diversão</div>
+      </div>
+      <div class="tipo-size">
+        <div class="tipo-size-label">H3 / 18–22PX</div>
+        <div style="font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 600; color: white;">Aulas para crianças a partir de 6 meses</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tipo-block" style="margin-top: 24px;">
+    <div class="tipo-label">CORPO · LEGENDAS · INTERFACE</div>
+    <div style="font-family: 'Nunito', sans-serif; font-size: 28px; font-weight: 700; color: var(--azul); margin-bottom: 8px;">Nunito</div>
+    <div style="font-family: 'Nunito', sans-serif; font-size: 14px; color: var(--cinza-500); margin-bottom: 16px;">Alternativa web para Fiston Soft Regular. Arredondada, limpa, alta legibilidade.</div>
+
+    <div class="tipo-sizes">
+      <div class="tipo-size">
+        <div class="tipo-size-label">TAG / 11PX</div>
+        <div style="font-family: 'Nunito'; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; color: var(--azul);">M U S I C A L I Z A Ç Ã O</div>
+      </div>
+      <div class="tipo-size">
+        <div class="tipo-size-label">BODY / 15–17PX</div>
+        <div style="font-family: 'Nunito'; font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.7;">A LA Music Kids acredita que a conexão entre o aluno e a música é muito importante, e que ele pode aprender se divertindo.</div>
+      </div>
+      <div class="tipo-size">
+        <div class="tipo-size-label">CTA / 14–16PX</div>
+        <div style="font-family: 'Baloo 2', cursive; font-size: 16px; font-weight: 700; color: var(--amarelo);">AGENDAR AULA EXPERIMENTAL 🎵</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wave-bar"><div style="background: var(--amarelo);"></div><div style="background: var(--verde);"></div><div style="background: var(--azul);"></div><div style="background: var(--vermelho);"></div></div>
+
+<!-- 03 — ELEMENTOS GRÁFICOS -->
+<div class="page page-white">
+  <div class="section-num">03</div>
+  <div class="section-label">ELEMENTOS GRÁFICOS</div>
+  <div class="section-title">Vocabulário <em>Visual</em></div>
+  <div class="section-desc">Os materiais da LA Music Kids utilizam um conjunto de elementos visuais recorrentes que criam identidade lúdica, alegre e reconhecível.</div>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-preview" style="background: var(--azul); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: var(--amarelo); border-radius: 50%;"></div>
+        <div style="position: absolute; bottom: -10px; left: -10px; width: 80px; height: 80px; background: var(--verde); border-radius: 50%;"></div>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Baloo 2'; font-size: 32px; font-weight: 800; color: white;">Ondas!</div>
+      </div>
+      <div class="comp-desc"><h4>Ondas Coloridas</h4><p>Elemento principal da identidade. Formas onduladas orgânicas nas 4 cores do catavento, sobrepostas, criando dinamismo e movimento. Usadas em fundos e bordas.</p></div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-preview" style="background: var(--preto); flex-direction: column; gap: 6px;">
+        <div style="display: flex; gap: 8px;">
+          <div style="width: 16px; height: 16px; background: var(--amarelo); border-radius: 50%;"></div>
+          <div style="width: 16px; height: 16px; background: var(--verde); border-radius: 50%;"></div>
+          <div style="width: 16px; height: 16px; background: var(--azul); border-radius: 50%;"></div>
+          <div style="width: 16px; height: 16px; background: var(--vermelho); border-radius: 50%;"></div>
+        </div>
+        <div style="display: flex; gap: 3px; margin-top: 8px;">
+          <div style="flex: 1; height: 6px; background: var(--amarelo); border-radius: 3px;"></div>
+          <div style="flex: 1; height: 6px; background: var(--verde); border-radius: 3px;"></div>
+          <div style="flex: 1; height: 6px; background: var(--azul); border-radius: 3px;"></div>
+          <div style="flex: 1; height: 6px; background: var(--vermelho); border-radius: 3px;"></div>
+        </div>
+      </div>
+      <div class="comp-desc"><h4>Barra de Cores</h4><p>Faixa horizontal com as 4 cores lado a lado (8px de altura). Usada como separador, header ou footer dos materiais. Versão em bolinhas para variação.</p></div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-preview" style="background: var(--creme);">
+        <div style="display: flex; gap: 12px; font-size: 40px;">🎵 🎸 🥁 🎹</div>
+      </div>
+      <div class="comp-desc"><h4>Emojis Musicais</h4><p>Emojis como elementos decorativos (notas musicais, instrumentos, estrelas). Usados em tags, bullets e CTAs para reforçar o tom lúdico sem exagero.</p></div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-preview" style="background: white; border: 2px solid var(--cinza-100);">
+        <div style="background: var(--amarelo); border-radius: 50px; padding: 8px 20px; font-family: 'Baloo 2'; font-weight: 700; font-size: 14px; color: var(--preto);">3 a 5 anos</div>
+        <div style="background: var(--azul); border-radius: 50px; padding: 8px 20px; font-family: 'Baloo 2'; font-weight: 700; font-size: 14px; color: white; margin-left: 8px;">6 a 10 anos</div>
+      </div>
+      <div class="comp-desc"><h4>Badge de Faixa Etária</h4><p>Pill badges coloridos para indicar faixa etária. Cada faixa pode ter uma cor do catavento. Border-radius: 50px, font-weight: 700.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 — TEMAS -->
+<div class="page page-amarelo">
+  <div class="section-num">04</div>
+  <div class="section-label">TEMAS</div>
+  <div class="section-title">Quatro <em>Superfícies</em></div>
+  <div class="section-desc" style="color: rgba(0,0,0,0.6);">O sistema visual opera com quatro temas de fundo, um para cada cor do catavento, além do branco e preto neutros.</div>
+
+  <div class="themes-grid">
+    <div class="theme-card theme-white">
+      <div class="theme-label">TEMA</div>
+      <div class="theme-title">Branco <span style="color: var(--azul);">Clean</span></div>
+      <div class="theme-desc">Fundo branco. Usado para conteúdo informativo e educativo. Texto em preto, destaques nas cores do catavento.</div>
+    </div>
+    <div class="theme-card theme-dark">
+      <div class="theme-label">TEMA</div>
+      <div class="theme-title">Dark <span style="color: var(--amarelo);">Mode</span></div>
+      <div class="theme-desc">Fundo #1A1A1A. Usado para capas, destaque premium. Texto em branco, cores vibrantes se destacam.</div>
+    </div>
+    <div class="theme-card theme-azul">
+      <div class="theme-label">TEMA</div>
+      <div class="theme-title">Azul <span style="color: var(--amarelo);">Kids</span></div>
+      <div class="theme-desc">Fundo #00AFEF. Usado para CTAs, slides de ação e conteúdo principal. Texto em branco, botões em amarelo ou branco.</div>
+      <div style="margin-top: 16px;"><button class="btn-amarelo btn-kids">Aula Experimental 🎵</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 — TOM DE VOZ -->
+<div class="page page-white">
+  <div class="section-num">05</div>
+  <div class="section-label">TOM DE VOZ</div>
+  <div class="section-title">Como a LA Music Kids <em>fala</em></div>
+  <div class="section-desc">A comunicação é direcionada aos pais, mas o tom é leve, divertido e confiante. Mostra que aprender música é sério, mas não precisa ser chato. Profissional sem ser frio, lúdico sem ser bobo.</div>
+
+  <div class="tom-grid">
+    <div class="tom-item tom-sim">
+      <div><span class="tom-badge">✓ SIM</span></div>
+      <div class="tom-texto"><strong>Divertido:</strong> "Seu filho vai aprender brincando — e nem vai perceber!"</div>
+    </div>
+    <div class="tom-item tom-nao">
+      <div><span class="tom-badge">✗ NÃO</span></div>
+      <div class="tom-texto"><strong>Infantilizado:</strong> "Venha pro mundinho mágico da musiquinha!"</div>
+    </div>
+    <div class="tom-item tom-sim">
+      <div><span class="tom-badge">✓ SIM</span></div>
+      <div class="tom-texto"><strong>Confiante:</strong> "Mais de 25 anos formando músicos — agora pros pequenos também."</div>
+    </div>
+    <div class="tom-item tom-nao">
+      <div><span class="tom-badge">✗ NÃO</span></div>
+      <div class="tom-texto"><strong>Formal demais:</strong> "Nossa metodologia pedagógica de musicalização infantil..."</div>
+    </div>
+    <div class="tom-item tom-sim">
+      <div><span class="tom-badge">✓ SIM</span></div>
+      <div class="tom-texto"><strong>Próximo:</strong> "A primeira nota do seu filho começa aqui. 🎵"</div>
+    </div>
+    <div class="tom-item tom-nao">
+      <div><span class="tom-badge">✗ NÃO</span></div>
+      <div class="tom-texto"><strong>Vendedor:</strong> "MATRÍCULA COM 50% DE DESCONTO! CORRA! ÚLTIMAS VAGAS!"</div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 — TOKENS -->
+<div class="page page-dark">
+  <div class="section-num">06</div>
+  <div class="section-label">TOKENS</div>
+  <div class="section-title">Design <em>Tokens</em></div>
+  <div class="section-desc">Variáveis CSS e valores de referência para implementação consistente em todos os materiais e plataformas da LA Music Kids.</div>
+
+  <table class="tokens-table">
+    <thead><tr><th>Token</th><th>Valor</th><th>Contexto</th></tr></thead>
+    <tbody>
+      <tr><td>--amarelo</td><td><span class="token-swatch" style="background:#FFF212;"></span> #FFF212</td><td>Energia, destaque, fundos</td></tr>
+      <tr><td>--verde</td><td><span class="token-swatch" style="background:#17B255;"></span> #17B255</td><td>Natureza, crescimento, sucesso</td></tr>
+      <tr><td>--azul</td><td><span class="token-swatch" style="background:#00AFEF;"></span> #00AFEF</td><td>Confiança, principal, CTA</td></tr>
+      <tr><td>--vermelho</td><td><span class="token-swatch" style="background:#ED3237;"></span> #ED3237</td><td>Paixão, ação, ênfase</td></tr>
+      <tr><td>--preto</td><td><span class="token-swatch" style="background:#1A1A1A;"></span> #1A1A1A</td><td>Texto principal, fundo escuro</td></tr>
+      <tr><td>--branco</td><td><span class="token-swatch" style="background:#FFF; border:1px solid #555;"></span> #FFFFFF</td><td>Fundo principal, cards</td></tr>
+      <tr><td>--creme</td><td><span class="token-swatch" style="background:#FFFEF5; border:1px solid #555;"></span> #FFFEF5</td><td>Fundo alternativo, suavidade</td></tr>
+      <tr><td colspan="3" style="border-bottom: 2px solid var(--amarelo); padding: 4px;"></td></tr>
+      <tr><td>--font-display</td><td colspan="2">'Baloo 2', cursive (web) / 'Fiston Soft Heavy' (logo)</td></tr>
+      <tr><td>--font-body</td><td colspan="2">'Nunito', sans-serif (web) / 'Fiston Soft Regular' (logo)</td></tr>
+      <tr><td colspan="3" style="border-bottom: 2px solid var(--amarelo); padding: 4px;"></td></tr>
+      <tr><td>--radius-pill</td><td>50px</td><td>Botões CTA, badges</td></tr>
+      <tr><td>--radius-card</td><td>20px</td><td>Cards de conteúdo</td></tr>
+      <tr><td>--radius-icon</td><td>12px</td><td>Ícones / avatares</td></tr>
+      <tr><td>--tracking-tag</td><td>3–4px</td><td>Letter-spacing de tags</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="wave-bar"><div style="background: var(--amarelo);"></div><div style="background: var(--verde);"></div><div style="background: var(--azul);"></div><div style="background: var(--vermelho);"></div></div>
+
+<!-- 07 — REGRAS -->
+<div class="page page-white">
+  <div class="section-num">07</div>
+  <div class="section-label">REGRAS</div>
+  <div class="section-title">Princípios de <em>Uso</em></div>
+  <div class="section-desc">Diretrizes para manter a consistência visual em todos os materiais produzidos para a LA Music Kids.</div>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-icon">🎨</div>
+      <div class="rule-title">Quatro cores, sempre</div>
+      <div class="rule-text">Use apenas as cores do catavento (amarelo, verde, azul, vermelho) + preto e branco. Nunca adicionar rosa, roxo ou laranja.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🔤</div>
+      <div class="rule-title">Arredondado, nunca angular</div>
+      <div class="rule-text">Fontes arredondadas (Baloo 2 / Nunito). Border-radius generoso (20px+ cards, 50px botões). A marca é suave e amigável.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">👨‍👩‍👧</div>
+      <div class="rule-title">Falar com os pais</div>
+      <div class="rule-text">A comunicação é para pais e responsáveis. Tom leve mas profissional. Não infantilizar. Mostrar credibilidade + diversão.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🌊</div>
+      <div class="rule-title">Ondas como assinatura</div>
+      <div class="rule-text">As ondas coloridas são o elemento visual principal (como a diagonal pink é da LA Music School). Usar em fundos, separadores e composições.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🎵</div>
+      <div class="rule-title">Emojis com moderação</div>
+      <div class="rule-text">Emojis musicais são permitidos em CTAs e redes sociais (🎵🎸🥁). Nunca excessivo. Máximo 1-2 por peça.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">⚡</div>
+      <div class="rule-title">Energia, não caos</div>
+      <div class="rule-text">O visual é vibrante mas organizado. Hierarquia clara. Respiro entre elementos. Diversão com método — como as aulas.</div>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-list">
+      <h4>✓ FAZER</h4>
+      <div class="check-item">✓ Usar Baloo 2 / Nunito para todos os materiais digitais</div>
+      <div class="check-item">✓ Manter as ondas coloridas como assinatura visual</div>
+      <div class="check-item">✓ Usar as 4 cores do catavento de forma equilibrada</div>
+      <div class="check-item">✓ Comunicar com os pais em tom leve e confiante</div>
+      <div class="check-item">✓ Manter border-radius generoso (arredondado)</div>
+      <div class="check-item">✓ Usar o logo com catavento colorido como padrão</div>
+      <div class="check-item">✓ Mostrar crianças reais, diversas e felizes</div>
+    </div>
+    <div class="dont-list">
+      <h4>✗ NÃO FAZER</h4>
+      <div class="check-item">✗ Usar cores fora da paleta (rosa, roxo, laranja)</div>
+      <div class="check-item">✗ Infantilizar a comunicação ("mundinho", "musiquinha")</div>
+      <div class="check-item">✗ Usar fontes serifadas ou angulares</div>
+      <div class="check-item">✗ Elementos agressivos, pontiagudos ou escuros demais</div>
+      <div class="check-item">✗ Misturar com a identidade da LA Music School (pink)</div>
+      <div class="check-item">✗ Excesso de emojis ou elementos decorativos</div>
+      <div class="check-item">✗ Tom de vendas agressivo (CORRA! ÚLTIMAS VAGAS!)</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="wave-bar"><div style="background: var(--amarelo);"></div><div style="background: var(--verde);"></div><div style="background: var(--azul);"></div><div style="background: var(--vermelho);"></div></div>
+<div class="footer">
+  <div class="footer-brand">LA Music Kids</div>
+  <div class="footer-tagline">música não é só pra gente grande</div>
+  <div>D E S I G N&nbsp;&nbsp;S Y S T E M&nbsp;&nbsp;V 1 . 0&nbsp;&nbsp;·&nbsp;&nbsp;A B R I L&nbsp;&nbsp;2 0 2 6</div>
+</div>
+
+</body>
+</html>

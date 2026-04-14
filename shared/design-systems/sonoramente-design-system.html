@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System — SonoraMente LA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --roxo-profundo: #3D1A6E;
+  --roxo: #5B2D8E;
+  --roxo-claro: #7B4DBE;
+  --lavanda: #B39DDB;
+  --roxo-soft: #EDE8F5;
+  --creme: #FAF8FF;
+  --cinza-quente: #6B6475;
+  --preto-soft: #1A1520;
+  --branco: #FFFFFF;
+  --dourado: #C9A84C;
+  --verde: #2D7A4A;
+  --verde-soft: #A8D5B5;
+  --verde-bg: #F0FBF4;
+  --vermelho: #C0392B;
+  --vermelho-bg: #FEF5F5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; color: var(--preto-soft); background: var(--creme); }
+.page { min-height: 100vh; padding: 80px 60px; position: relative; overflow: hidden; }
+.page-dark { background: var(--roxo-profundo); color: white; }
+.page-light { background: var(--creme); }
+.page-roxo { background: var(--roxo); color: white; }
+.section-num { font-size: 120px; font-weight: 700; color: var(--roxo-soft); opacity: 0.5; line-height: 1; margin-bottom: -20px; }
+.page-dark .section-num { color: var(--roxo-claro); opacity: 0.3; }
+.section-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--roxo-claro); margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+.section-label::before { content: ''; width: 32px; height: 2px; background: var(--roxo-claro); }
+.page-dark .section-label { color: var(--lavanda); }
+.page-dark .section-label::before { background: var(--lavanda); }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 56px); color: var(--roxo-profundo); line-height: 1.1; margin-bottom: 24px; }
+.section-title em { color: var(--roxo-claro); font-style: normal; }
+.page-dark .section-title { color: white; }
+.page-dark .section-title em { color: var(--lavanda); }
+.section-desc { font-size: 17px; color: var(--cinza-quente); line-height: 1.7; max-width: 680px; margin-bottom: 48px; }
+.page-dark .section-desc { color: rgba(255,255,255,0.7); }
+
+/* Cover */
+.cover { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 100vh; background: var(--roxo-profundo); padding: 60px; }
+.cover-brand { font-family: 'Playfair Display', serif; font-size: clamp(48px, 8vw, 80px); color: white; margin-bottom: 8px; }
+.cover-sub { font-size: 13px; letter-spacing: 6px; text-transform: uppercase; color: var(--lavanda); margin-bottom: 40px; }
+.cover-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(18px, 3vw, 24px); color: rgba(255,255,255,0.6); margin-bottom: 60px; }
+.cover-meta { font-size: 11px; letter-spacing: 3px; color: rgba(255,255,255,0.3); text-transform: uppercase; }
+.cover-divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--lavanda), transparent); margin: 32px auto; }
+
+/* Color cards */
+.colors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 48px; }
+.color-card { border-radius: 12px; overflow: hidden; background: white; }
+.color-swatch { height: 100px; }
+.color-info { padding: 14px 16px; }
+.color-name { font-size: 14px; font-weight: 600; color: var(--preto-soft); margin-bottom: 2px; }
+.color-hex { font-size: 12px; color: var(--cinza-quente); font-family: monospace; letter-spacing: 1px; }
+.color-uso { font-size: 11px; color: var(--lavanda); margin-top: 4px; }
+
+/* Gray scale */
+.grays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+
+/* Typography */
+.tipo-block { background: white; border-radius: 16px; padding: 40px; margin-bottom: 24px; }
+.tipo-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--roxo-claro); margin-bottom: 16px; }
+.tipo-sample-display { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--roxo-profundo); margin-bottom: 12px; line-height: 1.2; }
+.tipo-sample-body { font-family: 'DM Sans', sans-serif; font-size: 18px; color: var(--cinza-quente); line-height: 1.7; margin-bottom: 12px; }
+.tipo-meta { font-size: 12px; color: #AAA; }
+.tipo-sizes { margin-top: 24px; }
+.tipo-size { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--roxo-soft); }
+.tipo-size:last-child { border-bottom: none; }
+.tipo-size-label { font-size: 11px; color: var(--roxo-claro); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+
+/* Themes */
+.themes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.theme-card { border-radius: 16px; padding: 40px; min-height: 200px; display: flex; flex-direction: column; justify-content: flex-end; }
+.theme-dark { background: var(--roxo-profundo); color: white; }
+.theme-light { background: var(--creme); border: 1px solid var(--roxo-soft); color: var(--preto-soft); }
+.theme-roxo { background: var(--roxo); color: white; grid-column: 1 / -1; text-align: center; align-items: center; }
+.theme-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+.theme-dark .theme-label { color: var(--lavanda); }
+.theme-light .theme-label { color: var(--roxo-claro); }
+.theme-roxo .theme-label { color: rgba(255,255,255,0.7); }
+.theme-title { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 12px; }
+.theme-title em { font-style: normal; }
+.theme-dark .theme-title em { color: var(--lavanda); }
+.theme-light .theme-title em { color: var(--roxo-claro); }
+.theme-roxo .theme-title em { color: var(--dourado); }
+.theme-desc { font-size: 14px; opacity: 0.75; max-width: 400px; }
+
+/* Components */
+.comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.comp-card { background: white; border-radius: 16px; overflow: hidden; }
+.comp-preview { padding: 32px; min-height: 160px; display: flex; align-items: center; justify-content: center; }
+.comp-preview-dark { background: var(--preto-soft); }
+.comp-preview-light { background: var(--roxo-soft); }
+.comp-preview-roxo { background: var(--roxo); }
+.comp-desc { padding: 20px; }
+.comp-desc h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.comp-desc p { font-size: 13px; color: var(--cinza-quente); line-height: 1.5; }
+
+/* Tom de voz examples */
+.tom-item { padding: 20px; border-radius: 12px; margin-bottom: 12px; display: flex; gap: 16px; align-items: flex-start; }
+.tom-sim { background: var(--verde-bg); }
+.tom-nao { background: var(--vermelho-bg); }
+.tom-badge { font-size: 11px; font-weight: 600; letter-spacing: 2px; padding: 4px 10px; border-radius: 20px; color: white; white-space: nowrap; }
+.tom-badge-sim { background: var(--verde); }
+.tom-badge-nao { background: var(--vermelho); }
+.tom-texto { font-size: 14px; color: var(--cinza-quente); line-height: 1.5; }
+.tom-texto strong { color: var(--preto-soft); }
+
+/* Tokens table */
+.tokens-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.tokens-table th { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--roxo-claro); text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--roxo-claro); }
+.tokens-table td { padding: 14px 16px; border-bottom: 1px solid var(--roxo-soft); font-size: 14px; }
+.tokens-table td:first-child { font-family: monospace; color: var(--roxo-claro); font-size: 13px; }
+.token-swatch { width: 24px; height: 24px; border-radius: 6px; display: inline-block; vertical-align: middle; margin-right: 8px; }
+
+/* Rules */
+.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.rule-card { background: var(--preto-soft); border-radius: 16px; padding: 28px; }
+.rule-icon { font-size: 28px; margin-bottom: 12px; }
+.rule-title { font-size: 16px; font-weight: 700; color: white; margin-bottom: 8px; }
+.rule-text { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+/* Do/Don't */
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+.do-list, .dont-list { padding: 24px; border-radius: 12px; }
+.do-list { background: rgba(45,122,74,0.08); border: 1px solid rgba(45,122,74,0.2); }
+.dont-list { background: rgba(192,57,43,0.08); border: 1px solid rgba(192,57,43,0.2); }
+.do-list h4 { color: var(--verde); font-size: 13px; letter-spacing: 2px; margin-bottom: 16px; }
+.dont-list h4 { color: var(--vermelho); font-size: 13px; letter-spacing: 2px; margin-bottom: 16px; }
+.check-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; font-size: 14px; color: var(--cinza-quente); }
+
+/* CTA button preview */
+.btn-primary { background: var(--roxo); color: white; border: none; padding: 14px 32px; border-radius: 40px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1px; cursor: pointer; }
+.btn-outline { background: transparent; color: var(--roxo); border: 2px solid var(--roxo); padding: 12px 30px; border-radius: 40px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1px; cursor: pointer; }
+.btn-white { background: white; color: var(--roxo); border: none; padding: 14px 32px; border-radius: 40px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1px; cursor: pointer; }
+
+/* Footer */
+.footer { text-align: center; padding: 60px; background: var(--roxo-profundo); color: rgba(255,255,255,0.4); font-size: 12px; letter-spacing: 2px; }
+.footer-brand { font-family: 'Playfair Display', serif; font-size: 24px; color: white; margin-bottom: 16px; }
+
+@media (max-width: 768px) {
+  .page { padding: 40px 24px; }
+  .themes-grid, .comp-grid, .rules-grid, .do-dont { grid-template-columns: 1fr; }
+  .theme-roxo { grid-column: 1; }
+  .section-num { font-size: 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-sub">D E S I G N&nbsp;&nbsp;&nbsp;S Y S T E M</div>
+  <div class="cover-brand">SonoraMente</div>
+  <div style="font-family: 'DM Sans'; font-size: 14px; letter-spacing: 6px; color: var(--lavanda); margin-bottom: 24px;">L A</div>
+  <div class="cover-divider"></div>
+  <div class="cover-tagline">onde o som cuida da mente</div>
+  <div class="cover-meta">Identidade visual · Tipografia · Paleta · Componentes · Regras de uso</div>
+  <div style="margin-top: 80px; font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.2);">S O N O R A M E N T E&nbsp;&nbsp;L A&nbsp;&nbsp;v1.0 — Abril 2026</div>
+</div>
+
+<!-- 01 — CORES -->
+<div class="page page-light">
+  <div class="section-num">01</div>
+  <div class="section-label">CORES</div>
+  <div class="section-title">Paleta <em>Primária</em></div>
+  <div class="section-desc">A identidade da SonoraMente é construída sobre tons de roxo — que evocam profundidade, cuidado e transformação. O roxo profundo traz seriedade clínica sem frieza. O lavanda suaviza e acolhe. O creme mantém leveza e clareza.</div>
+
+  <h3 style="font-size: 11px; letter-spacing: 3px; color: var(--cinza-quente); margin-bottom: 20px; text-transform: uppercase;">Cores de Marca</h3>
+  <div class="colors-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #3D1A6E;"></div>
+      <div class="color-info"><div class="color-name">Roxo Profundo</div><div class="color-hex">#3D1A6E</div><div class="color-uso">PRINCIPAL · TÍTULOS · FUNDO</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #5B2D8E;"></div>
+      <div class="color-info"><div class="color-name">Roxo LA</div><div class="color-hex">#5B2D8E</div><div class="color-uso">MARCA · BOTÕES · DESTAQUES</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #7B4DBE;"></div>
+      <div class="color-info"><div class="color-name">Roxo Claro</div><div class="color-hex">#7B4DBE</div><div class="color-uso">LINKS · ÍCONES · BORDAS</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #B39DDB;"></div>
+      <div class="color-info"><div class="color-name">Lavanda</div><div class="color-hex">#B39DDB</div><div class="color-uso">DETALHES · FUNDOS SUAVES</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #EDE8F5;"></div>
+      <div class="color-info"><div class="color-name">Lilás Soft</div><div class="color-hex">#EDE8F5</div><div class="color-uso">BACKGROUNDS · CARDS</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #FAF8FF;"></div>
+      <div class="color-info"><div class="color-name">Creme</div><div class="color-hex">#FAF8FF</div><div class="color-uso">FUNDO GERAL · CLAREZA</div></div>
+    </div>
+  </div>
+
+  <h3 style="font-size: 11px; letter-spacing: 3px; color: var(--cinza-quente); margin-bottom: 20px; text-transform: uppercase;">Cores Complementares</h3>
+  <div class="colors-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #C9A84C;"></div>
+      <div class="color-info"><div class="color-name">Dourado</div><div class="color-hex">#C9A84C</div><div class="color-uso">ÊNFASE · PREMIUM</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1A1520;"></div>
+      <div class="color-info"><div class="color-name">Preto Soft</div><div class="color-hex">#1A1520</div><div class="color-uso">TEXTO PRINCIPAL</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #6B6475;"></div>
+      <div class="color-info"><div class="color-name">Cinza Quente</div><div class="color-hex">#6B6475</div><div class="color-uso">CORPO DE TEXTO</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #FFFFFF; border: 1px solid #E0E0E0;"></div>
+      <div class="color-info"><div class="color-name">Branco</div><div class="color-hex">#FFFFFF</div><div class="color-uso">CARDS · SUPERFÍCIES</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 — TIPOGRAFIA -->
+<div class="page page-dark">
+  <div class="section-num">02</div>
+  <div class="section-label">TIPOGRAFIA</div>
+  <div class="section-title">Hierarquia <em>Tipográfica</em></div>
+  <div class="section-desc">A tipografia da SonoraMente equilibra elegância e clareza. Títulos usam uma serifada clássica que evoca cuidado e sofisticação. O corpo usa uma sans-serif moderna e legível — científica sem ser fria.</div>
+
+  <div class="tipo-block" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+    <div class="tipo-label" style="color: var(--lavanda);">DISPLAY · TÍTULOS · DESTAQUES EMOCIONAIS</div>
+    <div class="tipo-sample-display" style="color: white;">Playfair Display</div>
+    <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; color: var(--lavanda); margin-bottom: 16px;">onde o som cuida da mente</div>
+    <div class="tipo-meta" style="color: rgba(255,255,255,0.4);">Serif elegante. Evoca cuidado, sofisticação e humanidade. Usar em títulos, taglines e citações.</div>
+
+    <div class="tipo-sizes" style="margin-top: 32px;">
+      <div class="tipo-size" style="border-color: rgba(255,255,255,0.1);">
+        <div class="tipo-size-label" style="color: var(--lavanda);">HERO / 48–64PX</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 48px; color: white; line-height: 1.1;">Onde o Som Cuida</div>
+      </div>
+      <div class="tipo-size" style="border-color: rgba(255,255,255,0.1);">
+        <div class="tipo-size-label" style="color: var(--lavanda);">H1 / 36–48PX</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 36px; color: white; line-height: 1.15;">A Música que Transforma</div>
+      </div>
+      <div class="tipo-size" style="border-color: rgba(255,255,255,0.1);">
+        <div class="tipo-size-label" style="color: var(--lavanda);">H2 / 24–32PX</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 24px; color: white; line-height: 1.2;">Cada Sessão é uma Semente</div>
+      </div>
+      <div class="tipo-size" style="border-color: rgba(255,255,255,0.1);">
+        <div class="tipo-size-label" style="color: var(--lavanda);">H3 / 18–22PX</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 18px; color: white;">Cuidado que vai além do diagnóstico</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tipo-block" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); margin-top: 24px;">
+    <div class="tipo-label" style="color: var(--lavanda);">CORPO · INTERFACE · COMUNICAÇÃO</div>
+    <div style="font-family: 'DM Sans', sans-serif; font-size: 28px; color: white; margin-bottom: 16px; font-weight: 500;">DM Sans</div>
+    <div style="font-family: 'DM Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 16px;">A musicoterapia é uma prática clínica baseada em evidências que utiliza intervenções musicais para alcançar objetivos terapêuticos individualizados.</div>
+    <div class="tipo-meta" style="color: rgba(255,255,255,0.4);">Sans-serif moderna e legível. Clareza sem frieza. Usar em todos os textos funcionais, legendas, botões e navegação.</div>
+
+    <div class="tipo-sizes" style="margin-top: 24px;">
+      <div class="tipo-size" style="border-color: rgba(255,255,255,0.1);">
+        <div class="tipo-size-label" style="color: var(--lavanda);">TAG / 11PX</div>
+        <div style="font-family: 'DM Sans'; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--lavanda);">M U S I C O T E R A P I A</div>
+      </div>
+      <div class="tipo-size" style="border-color: rgba(255,255,255,0.1);">
+        <div class="tipo-size-label" style="color: var(--lavanda);">LABEL / 13PX</div>
+        <div style="font-family: 'DM Sans'; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.8);">SESSÃO 01 — AVALIAÇÃO INICIAL</div>
+      </div>
+      <div class="tipo-size" style="border-color: rgba(255,255,255,0.1);">
+        <div class="tipo-size-label" style="color: var(--lavanda);">BODY / 15–17PX</div>
+        <div style="font-family: 'DM Sans'; font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.7;">Acreditamos que a música não é apenas arte. É cuidado, desenvolvimento e conexão.</div>
+      </div>
+      <div class="tipo-size" style="border-color: rgba(255,255,255,0.1);">
+        <div class="tipo-size-label" style="color: var(--lavanda);">CTA / 14PX</div>
+        <div style="font-family: 'DM Sans'; font-size: 14px; font-weight: 600; letter-spacing: 1px; color: white;">AGENDAR AVALIAÇÃO</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 — TEMAS -->
+<div class="page page-light">
+  <div class="section-num">03</div>
+  <div class="section-label">TEMAS</div>
+  <div class="section-title">Três <em>Superfícies</em></div>
+  <div class="section-desc">O sistema visual opera com três temas de fundo distintos, cada um com suas regras de contraste e uso de cor.</div>
+
+  <div class="themes-grid">
+    <div class="theme-card theme-dark">
+      <div class="theme-label">TEMA</div>
+      <div class="theme-title">Roxo <em>Profundo</em></div>
+      <div class="theme-desc">Fundo #3D1A6E. Usado como capa, slides de impacto e seções emocionais. Texto em branco, destaques em lavanda ou dourado.</div>
+    </div>
+    <div class="theme-card theme-light">
+      <div class="theme-label">TEMA</div>
+      <div class="theme-title" style="color: var(--roxo-profundo);">Light <em>Mode</em></div>
+      <div class="theme-desc">Fundo #FAF8FF. Usado para conteúdo educativo, dicas e informações clínicas. Texto em preto soft, destaques em roxo.</div>
+    </div>
+    <div class="theme-card theme-roxo">
+      <div class="theme-label">TEMA</div>
+      <div class="theme-title">Roxo <em>Mode</em></div>
+      <div class="theme-desc">Fundo #5B2D8E. Reservado para CTAs, slides de encerramento e chamadas para ação. Texto e botões em branco.</div>
+      <div style="margin-top: 24px;"><button class="btn-white">AGENDAR AVALIAÇÃO</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 — COMPONENTES -->
+<div class="page page-dark">
+  <div class="section-num">04</div>
+  <div class="section-label">COMPONENTES</div>
+  <div class="section-title">Padrões de <em>Componentes</em></div>
+  <div class="section-desc">Componentes recorrentes nos materiais da SonoraMente LA com suas especificações de estilo, espaçamento e hierarquia.</div>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-preview comp-preview-dark" style="flex-direction: column; gap: 8px; align-items: flex-start; padding-left: 40px;">
+        <div style="font-size: 10px; letter-spacing: 3px; color: var(--lavanda); display: flex; align-items: center; gap: 10px;"><span style="width: 24px; height: 2px; background: var(--lavanda); display: inline-block;"></span> MUSICOTERAPIA</div>
+        <div style="font-size: 10px; letter-spacing: 3px; color: var(--roxo-claro); display: flex; align-items: center; gap: 10px;"><span style="width: 32px; height: 2px; background: var(--roxo-claro); display: inline-block;"></span> DESENVOLVIMENTO INFANTIL</div>
+      </div>
+      <div class="comp-desc"><h4>Tag de Categoria</h4><p>DM Sans 600, 10–11px, tracking 3px, uppercase. Prefixo com linha de 24–32px em lavanda. Cor: var(--lavanda) ou var(--roxo-claro).</p></div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-preview" style="background: var(--roxo-profundo); flex-direction: column; gap: 12px;">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div style="width: 40px; height: 40px; background: var(--roxo); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">🎵</div>
+          <div><div style="font-size: 10px; letter-spacing: 2px; color: var(--lavanda);">SESSÃO 01</div><div style="font-family: 'Playfair Display'; font-size: 16px; color: white;">Avaliação Inicial</div></div>
+        </div>
+      </div>
+      <div class="comp-desc"><h4>Label de Sessão</h4><p>Formato "SESSÃO NN — TÍTULO" com ícone. Numeração em lavanda, título em Playfair Display branco. Ícone em card 40px com fundo roxo.</p></div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-preview" style="background: var(--roxo-profundo); flex-direction: column; gap: 10px; align-items: flex-start;">
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <div style="width: 20px; height: 20px; background: var(--roxo); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><span style="color: white; font-size: 12px;">✓</span></div>
+          <div style="font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.4;">A música como <strong style="color: white;">linguagem terapêutica</strong></div>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <div style="width: 20px; height: 20px; background: var(--roxo); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><span style="color: white; font-size: 12px;">✓</span></div>
+          <div style="font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.4;">Resultados que crescem com o <strong style="color: white;">tempo e afeto</strong></div>
+        </div>
+      </div>
+      <div class="comp-desc"><h4>Lista de Checks</h4><p>Bullet com checkmark em círculo roxo (20px). Texto em branco suave com palavras-chave em bold. Gap 10px entre ícone e texto.</p></div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-preview comp-preview-roxo" style="flex-direction: column; gap: 12px;">
+        <button class="btn-white">AGENDAR AVALIAÇÃO</button>
+        <button class="btn-outline" style="color: white; border-color: rgba(255,255,255,0.5);">FALE CONOSCO</button>
+      </div>
+      <div class="comp-desc"><h4>Botões CTA</h4><p>Border-radius: 40px (pill). Primário: fundo branco, texto roxo. Outline: borda branca 50% opacidade, texto branco. Padding: 14px 32px.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 — TOM DE VOZ -->
+<div class="page page-light">
+  <div class="section-num">05</div>
+  <div class="section-label">TOM DE VOZ</div>
+  <div class="section-title">Como a SonoraMente <em>fala</em></div>
+  <div class="section-desc">Nossa voz é a de um especialista que também abraça. Científica sem ser fria. Acolhedora sem ser infantil. Confiante sem ser arrogante.</div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+    <div class="tom-item tom-sim">
+      <div><span class="tom-badge tom-badge-sim">✓ SIM</span></div>
+      <div class="tom-texto"><strong>Acolhedor:</strong> "Entendemos que cada criança tem o seu tempo."</div>
+    </div>
+    <div class="tom-item tom-nao">
+      <div><span class="tom-badge tom-badge-nao">✗ NÃO</span></div>
+      <div class="tom-texto"><strong>Distante:</strong> "O paciente apresenta déficit de processamento auditivo central."</div>
+    </div>
+    <div class="tom-item tom-sim">
+      <div><span class="tom-badge tom-badge-sim">✓ SIM</span></div>
+      <div class="tom-texto"><strong>Científico:</strong> "A musicoterapia tem evidências robustas no desenvolvimento da linguagem."</div>
+    </div>
+    <div class="tom-item tom-nao">
+      <div><span class="tom-badge tom-badge-nao">✗ NÃO</span></div>
+      <div class="tom-texto"><strong>Vago:</strong> "A música faz milagres e cura tudo de forma mágica."</div>
+    </div>
+    <div class="tom-item tom-sim">
+      <div><span class="tom-badge tom-badge-sim">✓ SIM</span></div>
+      <div class="tom-texto"><strong>Humano:</strong> "Seu filho não precisa de perfeição. Precisa de escuta."</div>
+    </div>
+    <div class="tom-item tom-nao">
+      <div><span class="tom-badge tom-badge-nao">✗ NÃO</span></div>
+      <div class="tom-texto"><strong>Alarmista:</strong> "Se você não agir agora, pode comprometer o futuro do seu filho."</div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 — TOKENS -->
+<div class="page page-dark">
+  <div class="section-num">06</div>
+  <div class="section-label">TOKENS</div>
+  <div class="section-title">Design <em>Tokens</em></div>
+  <div class="section-desc">Variáveis CSS e valores de referência para implementação consistente em todos os materiais e plataformas da SonoraMente LA.</div>
+
+  <table class="tokens-table" style="color: rgba(255,255,255,0.85);">
+    <thead><tr><th>Token</th><th>Valor</th><th>Contexto</th></tr></thead>
+    <tbody>
+      <tr><td>--roxo-profundo</td><td><span class="token-swatch" style="background:#3D1A6E;"></span> #3D1A6E</td><td>Principal, títulos, fundo escuro</td></tr>
+      <tr><td>--roxo</td><td><span class="token-swatch" style="background:#5B2D8E;"></span> #5B2D8E</td><td>Marca, botões, destaques</td></tr>
+      <tr><td>--roxo-claro</td><td><span class="token-swatch" style="background:#7B4DBE;"></span> #7B4DBE</td><td>Links, ícones, bordas</td></tr>
+      <tr><td>--lavanda</td><td><span class="token-swatch" style="background:#B39DDB;"></span> #B39DDB</td><td>Detalhes, fundos suaves</td></tr>
+      <tr><td>--roxo-soft</td><td><span class="token-swatch" style="background:#EDE8F5;"></span> #EDE8F5</td><td>Backgrounds, cards</td></tr>
+      <tr><td>--creme</td><td><span class="token-swatch" style="background:#FAF8FF;"></span> #FAF8FF</td><td>Fundo geral, clareza</td></tr>
+      <tr><td>--preto-soft</td><td><span class="token-swatch" style="background:#1A1520;"></span> #1A1520</td><td>Texto principal</td></tr>
+      <tr><td>--cinza-quente</td><td><span class="token-swatch" style="background:#6B6475;"></span> #6B6475</td><td>Corpo de texto</td></tr>
+      <tr><td>--dourado</td><td><span class="token-swatch" style="background:#C9A84C;"></span> #C9A84C</td><td>Ênfase premium</td></tr>
+      <tr><td>--branco</td><td><span class="token-swatch" style="background:#FFF; border:1px solid #555;"></span> #FFFFFF</td><td>Cards, botões, texto sobre escuro</td></tr>
+      <tr><td colspan="3" style="border-bottom: 2px solid var(--roxo-claro); padding: 4px;"></td></tr>
+      <tr><td>--font-display</td><td colspan="2">'Playfair Display', 'Georgia', serif</td></tr>
+      <tr><td>--font-body</td><td colspan="2">'DM Sans', 'Helvetica Neue', sans-serif</td></tr>
+      <tr><td colspan="3" style="border-bottom: 2px solid var(--roxo-claro); padding: 4px;"></td></tr>
+      <tr><td>--radius-pill</td><td>40px</td><td>Botões CTA</td></tr>
+      <tr><td>--radius-card</td><td>16px</td><td>Cards de conteúdo</td></tr>
+      <tr><td>--radius-badge</td><td>20px</td><td>Badges e tags</td></tr>
+      <tr><td>--radius-icon</td><td>10px</td><td>Ícones / avatares</td></tr>
+      <tr><td>--tracking-tag</td><td>3–4px</td><td>Letter-spacing de tags</td></tr>
+      <tr><td>--tracking-label</td><td>2px</td><td>Letter-spacing de labels</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 07 — REGRAS -->
+<div class="page page-light">
+  <div class="section-num">07</div>
+  <div class="section-label">REGRAS</div>
+  <div class="section-title">Princípios de <em>Uso</em></div>
+  <div class="section-desc">Diretrizes para manter a consistência visual em todos os materiais produzidos para a SonoraMente LA.</div>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-icon">💜</div>
+      <div class="rule-title">Roxo é a cor do cuidado</div>
+      <div class="rule-text">O roxo é a ÚNICA cor de destaque. Não usar pink, azul ou verde como cor primária. O roxo representa profundidade, transformação e acolhimento.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">✨</div>
+      <div class="rule-title">Serifada para emoção</div>
+      <div class="rule-text">Títulos e frases emocionais sempre em Playfair Display. DM Sans é para textos funcionais. A combinação cria o equilíbrio entre ciência e afeto.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🫶</div>
+      <div class="rule-title">Acolher sem infantilizar</div>
+      <div class="rule-text">A comunicação é direcionada aos pais, não às crianças. Tom profissional mas humano. Nunca usar linguagem excessivamente lúdica ou infantil.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">📐</div>
+      <div class="rule-title">Respiro e suavidade</div>
+      <div class="rule-text">Espaçamento generoso (base 8px). Bordas arredondadas (16px cards). Gradientes suaves. Nada agressivo ou angular. A marca respira calma.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🔬</div>
+      <div class="rule-title">Ciência com coração</div>
+      <div class="rule-text">Citações e dados científicos são bem-vindos, mas sempre acompanhados de linguagem acessível. Embasar sem intimidar.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🎵</div>
+      <div class="rule-title">A música como fio condutor</div>
+      <div class="rule-text">Metáforas musicais são parte do vocabulário: "melodia do desenvolvimento", "harmonia entre família e terapeuta", "ritmo de cada criança".</div>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-list">
+      <h4>✓ FAZER</h4>
+      <div class="check-item">✓ Usar Playfair Display para títulos emocionais</div>
+      <div class="check-item">✓ Manter paleta restrita ao roxo e suas variações</div>
+      <div class="check-item">✓ Usar tom acolhedor e científico simultaneamente</div>
+      <div class="check-item">✓ Comunicar com os pais, não com as crianças</div>
+      <div class="check-item">✓ Incluir embasamento científico quando possível</div>
+      <div class="check-item">✓ Manter espaçamento generoso e bordas suaves</div>
+      <div class="check-item">✓ Usar gradientes suaves entre tons de roxo</div>
+    </div>
+    <div class="dont-list">
+      <h4>✗ NÃO FAZER</h4>
+      <div class="check-item">✗ Usar linguagem infantilizada ou excessivamente lúdica</div>
+      <div class="check-item">✗ Aplicar cores fora da paleta (pink, azul, etc.)</div>
+      <div class="check-item">✗ Usar tom alarmista ou que gere culpa nos pais</div>
+      <div class="check-item">✗ Fazer promessas de cura ou resultados garantidos</div>
+      <div class="check-item">✗ Usar jargão médico sem explicação acessível</div>
+      <div class="check-item">✗ Elementos visuais agressivos, angulares ou contrastantes demais</div>
+      <div class="check-item">✗ Misturar a identidade com a da LA Music School</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">SonoraMente LA</div>
+  <div>D E S I G N&nbsp;&nbsp;S Y S T E M&nbsp;&nbsp;V 1 . 0&nbsp;&nbsp;·&nbsp;&nbsp;A B R I L&nbsp;&nbsp;2 0 2 6</div>
+  <div style="margin-top: 8px;">onde o som cuida da mente</div>
+</div>
+
+</body>
+</html>

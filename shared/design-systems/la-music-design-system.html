@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LA Music School — Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-primary: #E91E63;
+    --pink-dark: #C2185B;
+    --pink-light: #F06292;
+    --pink-bg: #E91E63;
+    --black: #0A0A0A;
+    --black-card: #141414;
+    --black-subtle: #1A1A1A;
+    --gray-900: #212121;
+    --gray-700: #424242;
+    --gray-500: #757575;
+    --gray-400: #9E9E9E;
+    --gray-300: #BDBDBD;
+    --gray-200: #E0E0E0;
+    --gray-100: #F0F0F0;
+    --cream: #F5F1EC;
+    --cream-dark: #EDE8E1;
+    --white: #FFFFFF;
+    --font-display: 'Bebas Neue', 'Impact', sans-serif;
+    --font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--black);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    min-height: 100vh;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 45%;
+    height: 120%;
+    background: var(--pink-primary);
+    transform: skewX(-8deg);
+    z-index: 1;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 12%;
+    width: 180px;
+    height: 180px;
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  .cover-label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--pink-primary);
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .cover-label::before {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 2px;
+    background: var(--pink-primary);
+    margin-right: 16px;
+    vertical-align: middle;
+  }
+
+  .cover-title {
+    font-family: var(--font-display);
+    font-size: clamp(64px, 10vw, 130px);
+    line-height: 0.92;
+    color: var(--white);
+    position: relative;
+    z-index: 3;
+    max-width: 55%;
+  }
+
+  .cover-title span {
+    color: var(--pink-primary);
+  }
+
+  .cover-subtitle {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray-400);
+    margin-top: 32px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .cover-footer {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+  }
+
+  .cover-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .cover-logo .logo-circle {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cover-logo .logo-circle::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--pink-primary);
+    border-radius: 50%;
+  }
+
+  .cover-version {
+    color: var(--gray-500);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  /* ─── SECTION LAYOUT ─── */
+  .section {
+    padding: 100px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-dark {
+    background: var(--black);
+    color: var(--white);
+    max-width: 100%;
+    padding: 100px 60px;
+  }
+
+  .section-dark .section-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-pink {
+    background: var(--pink-primary);
+    color: var(--white);
+    max-width: 100%;
+    padding: 100px 60px;
+  }
+
+  .section-pink .section-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-number {
+    font-family: var(--font-display);
+    font-size: 120px;
+    color: var(--gray-200);
+    line-height: 1;
+    margin-bottom: -20px;
+    opacity: 0.5;
+  }
+
+  .section-dark .section-number {
+    color: var(--gray-700);
+  }
+
+  .section-tag {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--pink-primary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: var(--pink-primary);
+  }
+
+  .section-dark .section-tag { color: var(--pink-primary); }
+  .section-pink .section-tag { color: var(--white); }
+  .section-pink .section-tag::before { background: var(--white); }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 0.95;
+    margin-bottom: 32px;
+  }
+
+  .section-title span { color: var(--pink-primary); }
+  .section-pink .section-title span { color: var(--black); }
+
+  .section-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--gray-500);
+    max-width: 640px;
+    margin-bottom: 60px;
+  }
+
+  .section-dark .section-desc { color: var(--gray-400); }
+  .section-pink .section-desc { color: rgba(255,255,255,0.85); }
+
+  /* ─── COLOR PALETTE ─── */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .color-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+
+  .section-dark .color-card {
+    background: var(--black-card);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  }
+
+  .color-swatch {
+    height: 140px;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+  }
+
+  .color-info {
+    padding: 20px;
+  }
+
+  .color-name {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .color-hex {
+    font-size: 13px;
+    color: var(--gray-500);
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+  }
+
+  .color-role {
+    font-size: 11px;
+    color: var(--gray-400);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ─── TYPOGRAPHY SHOWCASE ─── */
+  .type-specimen {
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .section-dark .type-specimen {
+    border-bottom-color: var(--gray-700);
+  }
+
+  .type-specimen:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .type-meta {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .type-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .type-meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  .type-meta-value {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .type-display-giant {
+    font-family: var(--font-display);
+    font-size: clamp(60px, 10vw, 140px);
+    line-height: 0.9;
+    margin-bottom: 16px;
+  }
+
+  .type-display-giant span { color: var(--pink-primary); }
+
+  .type-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .type-scale-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+  }
+
+  .type-scale-label {
+    flex-shrink: 0;
+    width: 120px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  .type-scale-sample {
+    font-family: var(--font-display);
+  }
+
+  .type-body-sample {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  /* ─── SPACING SYSTEM ─── */
+  .spacing-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .spacing-label {
+    flex-shrink: 0;
+    width: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-500);
+    font-family: 'Courier New', monospace;
+  }
+
+  .spacing-bar {
+    height: 24px;
+    background: var(--pink-primary);
+    border-radius: 4px;
+    opacity: 0.8;
+  }
+
+  .spacing-value {
+    font-size: 12px;
+    color: var(--gray-400);
+    font-family: 'Courier New', monospace;
+  }
+
+  /* ─── ELEMENT PATTERNS ─── */
+  .pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+  }
+
+  .pattern-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+
+  .section-dark .pattern-card {
+    background: var(--black-card);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+
+  .pattern-preview {
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    background: var(--cream);
+  }
+
+  .section-dark .pattern-preview {
+    background: var(--black-subtle);
+  }
+
+  .pattern-info {
+    padding: 24px;
+  }
+
+  .pattern-name {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .pattern-desc {
+    font-size: 13px;
+    color: var(--gray-500);
+    line-height: 1.5;
+  }
+
+  /* ─── COMPONENT DEMOS ─── */
+  .demo-slide-number {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-400);
+    letter-spacing: 2px;
+  }
+
+  .demo-category-tag {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--pink-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .demo-category-tag::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: var(--pink-primary);
+  }
+
+  .demo-headline {
+    font-family: var(--font-display);
+    font-size: 56px;
+    line-height: 0.92;
+  }
+
+  .demo-headline span { color: var(--pink-primary); }
+
+  .demo-body-text {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gray-500);
+  }
+
+  .demo-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 36px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .demo-cta-primary {
+    background: var(--white);
+    color: var(--pink-primary);
+  }
+
+  .demo-cta-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+  }
+
+  .demo-cta-dark {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .demo-cta-arrow {
+    width: 24px;
+    height: 24px;
+    background: var(--pink-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .demo-cta-arrow::after {
+    content: '→';
+    font-size: 12px;
+    color: var(--white);
+  }
+
+  .demo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .demo-badge-pink {
+    background: var(--pink-primary);
+    color: var(--white);
+  }
+
+  .demo-badge-dark {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .demo-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.6;
+  }
+
+  /* ─── ICON / DECORATIVE ELEMENTS ─── */
+  .decor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px;
+  }
+
+  .decor-item {
+    aspect-ratio: 1;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .decor-item-dark {
+    background: var(--black-card);
+  }
+
+  .decor-item-cream {
+    background: var(--cream);
+  }
+
+  .decor-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  /* ─── GRID / LAYOUT RULES ─── */
+  .layout-demo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .layout-card {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .layout-card-dark {
+    background: var(--black);
+    color: var(--white);
+    padding: 48px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .layout-card-cream {
+    background: var(--cream);
+    color: var(--black);
+    padding: 48px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .layout-card-pink {
+    background: var(--pink-primary);
+    color: var(--white);
+    padding: 48px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .layout-card-pink::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 250px;
+    height: 250px;
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+  }
+
+  .layout-card .diagonal-stripe {
+    position: absolute;
+    top: 0;
+    right: 30%;
+    width: 80px;
+    height: 100%;
+    background: var(--pink-primary);
+    transform: skewX(-8deg);
+    opacity: 0.9;
+  }
+
+  /* ─── CODE TOKENS ─── */
+  .token-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .token-table th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    padding: 16px 20px;
+    border-bottom: 2px solid var(--gray-200);
+  }
+
+  .section-dark .token-table th {
+    border-bottom-color: var(--gray-700);
+  }
+
+  .token-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--gray-100);
+    vertical-align: middle;
+  }
+
+  .section-dark .token-table td {
+    border-bottom-color: rgba(255,255,255,0.06);
+  }
+
+  .token-name {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--pink-primary);
+  }
+
+  .token-swatch {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    vertical-align: middle;
+    margin-right: 10px;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .cover { padding: 40px 24px; }
+    .cover-title { max-width: 70%; }
+    .cover-footer { left: 24px; right: 24px; bottom: 24px; }
+    .section { padding: 60px 24px; }
+    .section-dark, .section-pink { padding: 60px 24px; }
+    .palette-grid { grid-template-columns: repeat(2, 1fr); }
+    .layout-demo { grid-template-columns: 1fr; }
+    .pattern-grid { grid-template-columns: 1fr; }
+    .type-scale-row { flex-direction: column; gap: 4px; }
+    .type-scale-label { width: auto; }
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 4px;
+    background: linear-gradient(90deg, var(--pink-primary) 0%, var(--pink-primary) 30%, transparent 30%);
+    margin: 0;
+  }
+
+  /* ─── DOTS PATTERN ─── */
+  .dots-pattern {
+    display: grid;
+    grid-template-columns: repeat(6, 8px);
+    grid-template-rows: repeat(5, 8px);
+    gap: 6px;
+  }
+
+  .dots-pattern .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.4;
+  }
+
+  .dots-pattern .dot-filled {
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+    margin: -2px;
+  }
+
+  /* ─── USAGE RULES ─── */
+  .rule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 32px;
+  }
+
+  .rule-card {
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid var(--gray-200);
+  }
+
+  .section-dark .rule-card {
+    border-color: var(--gray-700);
+  }
+
+  .rule-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .rule-title {
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .rule-text {
+    font-size: 14px;
+    color: var(--gray-500);
+    line-height: 1.6;
+  }
+
+  .section-dark .rule-text {
+    color: var(--gray-400);
+  }
+
+  /* ─── DO / DON'T ─── */
+  .do-dont-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .do-card, .dont-card {
+    padding: 32px;
+    border-radius: 16px;
+  }
+
+  .do-card {
+    background: rgba(76, 175, 80, 0.08);
+    border: 2px solid rgba(76, 175, 80, 0.3);
+  }
+
+  .dont-card {
+    background: rgba(244, 67, 54, 0.06);
+    border: 2px solid rgba(244, 67, 54, 0.2);
+  }
+
+  .do-card h4, .dont-card h4 {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .do-card h4 { color: #4CAF50; }
+  .dont-card h4 { color: #F44336; }
+
+  .do-card ul, .dont-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .do-card li, .dont-card li {
+    font-size: 14px;
+    line-height: 1.5;
+    padding-left: 24px;
+    position: relative;
+    color: var(--gray-700);
+  }
+
+  .do-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+    font-weight: 700;
+  }
+
+  .dont-card li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: #F44336;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- COVER                                       -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="cover">
+  <span class="cover-label">Design System</span>
+  <h1 class="cover-title">
+    LA MUSIC <span>SCHOOL</span>
+  </h1>
+  <p class="cover-subtitle">Identidade visual · Tipografia · Paleta · Componentes · Regras de uso</p>
+  <div class="cover-footer">
+    <div class="cover-logo">
+      <div class="logo-circle"></div>
+      LA Music School
+    </div>
+    <span class="cover-version">v1.0 — Abril 2026</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 01 — PALETA DE CORES                        -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="divider"></div>
+<section class="section">
+  <span class="section-number">01</span>
+  <div class="section-tag">Cores</div>
+  <h2 class="section-title">PALETA <span>PRIMÁRIA</span></h2>
+  <p class="section-desc">
+    A identidade da LA Music School é construída sobre o contraste forte entre preto, pink vibrante e superfícies claras. O pink é a cor de destaque — representa energia, paixão e movimento. O preto traz sofisticação e peso visual. O creme suaviza a composição.
+  </p>
+
+  <h3 style="font-weight:800; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--gray-400); margin-bottom:24px;">Cores de Marca</h3>
+  <div class="palette-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#E91E63;"></div>
+      <div class="color-info">
+        <div class="color-name">Pink Primary</div>
+        <div class="color-hex">#E91E63</div>
+        <div class="color-role">Destaque principal</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#C2185B;"></div>
+      <div class="color-info">
+        <div class="color-name">Pink Dark</div>
+        <div class="color-hex">#C2185B</div>
+        <div class="color-role">Hover / ênfase</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#F06292;"></div>
+      <div class="color-info">
+        <div class="color-name">Pink Light</div>
+        <div class="color-hex">#F06292</div>
+        <div class="color-role">Elementos suaves</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#0A0A0A;"></div>
+      <div class="color-info">
+        <div class="color-name">Black</div>
+        <div class="color-hex">#0A0A0A</div>
+        <div class="color-role">Fundo escuro / texto</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#141414;"></div>
+      <div class="color-info">
+        <div class="color-name">Black Card</div>
+        <div class="color-hex">#141414</div>
+        <div class="color-role">Cards sobre fundo escuro</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#F5F1EC;"></div>
+      <div class="color-info">
+        <div class="color-name">Cream</div>
+        <div class="color-hex">#F5F1EC</div>
+        <div class="color-role">Fundo claro / superfície</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-weight:800; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--gray-400); margin-bottom:24px; margin-top:48px;">Escala de Cinzas</h3>
+  <div class="palette-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#212121;"></div>
+      <div class="color-info">
+        <div class="color-name">Gray 900</div>
+        <div class="color-hex">#212121</div>
+        <div class="color-role">Texto principal (dark)</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#424242;"></div>
+      <div class="color-info">
+        <div class="color-name">Gray 700</div>
+        <div class="color-hex">#424242</div>
+        <div class="color-role">Texto secundário</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#757575;"></div>
+      <div class="color-info">
+        <div class="color-name">Gray 500</div>
+        <div class="color-hex">#757575</div>
+        <div class="color-role">Corpo de texto</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#9E9E9E;"></div>
+      <div class="color-info">
+        <div class="color-name">Gray 400</div>
+        <div class="color-hex">#9E9E9E</div>
+        <div class="color-role">Labels / captions</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#E0E0E0;"></div>
+      <div class="color-info">
+        <div class="color-name">Gray 200</div>
+        <div class="color-hex">#E0E0E0</div>
+        <div class="color-role">Bordas / divisores</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FFFFFF; border:1px solid #eee;"></div>
+      <div class="color-info">
+        <div class="color-name">White</div>
+        <div class="color-hex">#FFFFFF</div>
+        <div class="color-role">Fundo puro / cards</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 02 — TIPOGRAFIA                             -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section-dark">
+  <div class="section-inner">
+    <span class="section-number">02</span>
+    <div class="section-tag">Tipografia</div>
+    <h2 class="section-title" style="color:var(--white);">HIERARQUIA <span>TIPOGRÁFICA</span></h2>
+    <p class="section-desc">
+      A tipografia da LA Music School é direta e impactante. Títulos sempre em caixa alta com a fonte display. O corpo de texto usa uma sans-serif geométrica de alta legibilidade. A combinação cria contraste entre impacto e clareza.
+    </p>
+
+    <!-- Display Font -->
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-meta-item">
+          <span class="type-meta-label">Família</span>
+          <span class="type-meta-value" style="color:var(--white);">Bebas Neue</span>
+        </div>
+        <div class="type-meta-item">
+          <span class="type-meta-label">Uso</span>
+          <span class="type-meta-value" style="color:var(--white);">Títulos & Headlines</span>
+        </div>
+        <div class="type-meta-item">
+          <span class="type-meta-label">Peso</span>
+          <span class="type-meta-value" style="color:var(--white);">400 (Regular)</span>
+        </div>
+        <div class="type-meta-item">
+          <span class="type-meta-label">Case</span>
+          <span class="type-meta-value" style="color:var(--white);">Sempre Uppercase</span>
+        </div>
+      </div>
+      <div class="type-display-giant" style="color:var(--white);">
+        SEGURE COM <span>LEVEZA</span>
+      </div>
+
+      <div class="type-scale">
+        <div class="type-scale-row">
+          <span class="type-scale-label">Hero / 96–140px</span>
+          <span class="type-scale-sample" style="font-size:72px; color:var(--white); line-height:0.9;">PALHETADA</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-scale-label">H1 / 56–72px</span>
+          <span class="type-scale-sample" style="font-size:52px; color:var(--white); line-height:0.9;">SEGREDOS DA TÉCNICA</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-scale-label">H2 / 36–48px</span>
+          <span class="type-scale-sample" style="font-size:38px; color:var(--white); line-height:0.95;">PULSO, NÃO BRAÇO</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-scale-label">H3 / 24–32px</span>
+          <span class="type-scale-sample" style="font-size:26px; color:var(--white); line-height:1;">PRESSÃO CERTA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body Font -->
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-meta-item">
+          <span class="type-meta-label">Família</span>
+          <span class="type-meta-value" style="color:var(--white);">Montserrat</span>
+        </div>
+        <div class="type-meta-item">
+          <span class="type-meta-label">Uso</span>
+          <span class="type-meta-value" style="color:var(--white);">Corpo, Tags, Labels, CTAs</span>
+        </div>
+        <div class="type-meta-item">
+          <span class="type-meta-label">Pesos</span>
+          <span class="type-meta-value" style="color:var(--white);">300 · 400 · 500 · 600 · 700 · 800 · 900</span>
+        </div>
+      </div>
+
+      <div class="type-scale">
+        <div class="type-scale-row">
+          <span class="type-scale-label">Tag / 12px</span>
+          <span class="type-body-sample" style="font-size:12px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:var(--pink-primary);">TÉCNICA &amp; VELOCIDADE</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-scale-label">Label / 13px</span>
+          <span class="type-body-sample" style="font-size:13px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gray-400);">DICA 01 — PRESSÃO CERTA</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-scale-label">Body / 15–16px</span>
+          <span class="type-body-sample" style="font-size:15px; font-weight:400; color:var(--gray-300);">A maioria trava porque aperta demais. A palheta precisa ter liberdade para deslizar na corda — não cortar.</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-scale-label">Caption / 11px</span>
+          <span class="type-body-sample" style="font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--gray-500);">LA Music School · Escola de Música</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-scale-label">CTA / 14px</span>
+          <span class="type-body-sample" style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--white);">Aula experimental grátis</span>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-scale-label">Slide Nº / 13px</span>
+          <span class="type-body-sample" style="font-size:13px; font-weight:500; letter-spacing:2px; color:var(--gray-400);">01 / 04</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Highlight Rule -->
+    <div class="type-specimen" style="border-bottom:none;">
+      <div class="section-tag" style="margin-bottom:24px;">Regra de Destaque</div>
+      <p style="color:var(--gray-300); font-size:15px; line-height:1.7; max-width:600px; margin-bottom:32px;">
+        A palavra-chave do título recebe a cor <strong style="color:var(--pink-primary);">Pink Primary (#E91E63)</strong> para criar contraste e hierarquia visual. Geralmente é a última linha ou a palavra mais importante da frase.
+      </p>
+      <div style="display:flex; gap:48px; flex-wrap:wrap;">
+        <div>
+          <span style="font-family:var(--font-display); font-size:48px; color:var(--white); line-height:0.92; display:block;">SEGURE COM</span>
+          <span style="font-family:var(--font-display); font-size:48px; color:var(--pink-primary); line-height:0.92;">LEVEZA</span>
+        </div>
+        <div>
+          <span style="font-family:var(--font-display); font-size:48px; color:var(--white); line-height:0.92; display:block;">PALHE<span style="color:var(--pink-primary);">TA</span></span>
+          <span style="font-family:var(--font-display); font-size:48px; color:var(--white); line-height:0.92; display:block;">DA</span>
+          <span style="font-family:var(--font-display); font-size:48px; color:var(--pink-primary); line-height:0.92;">VELOZ</span>
+        </div>
+        <div>
+          <span style="font-family:var(--font-display); font-size:48px; color:var(--white); line-height:0.92; display:block;">PULSO,</span>
+          <span style="font-family:var(--font-display); font-size:48px; color:var(--white); line-height:0.92; display:block;">NÃO</span>
+          <span style="font-family:var(--font-display); font-size:48px; color:var(--gray-500); line-height:0.92;">BRAÇO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 03 — ELEMENTOS GRÁFICOS                     -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="divider"></div>
+<section class="section">
+  <span class="section-number">03</span>
+  <div class="section-tag">Elementos Gráficos</div>
+  <h2 class="section-title">VOCABULÁRIO <span>VISUAL</span></h2>
+  <p class="section-desc">
+    Os materiais da LA Music School utilizam um conjunto recorrente de elementos decorativos que criam identidade e ritmo visual nas composições.
+  </p>
+
+  <div class="pattern-grid">
+    <!-- Diagonal Stripe -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--black); position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:35%; width:60px; height:100%; background:var(--pink-primary); transform:skewX(-8deg);"></div>
+        <div style="position:absolute; top:0; left:42%; width:20px; height:100%; background:rgba(200,20,80,0.5); transform:skewX(-8deg);"></div>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Faixa Diagonal</div>
+        <div class="pattern-desc">Elemento principal da identidade. Corte diagonal em pink (~8° de inclinação) aplicado sobre fundo escuro. Pode ser acompanhado de uma faixa secundária mais estreita com menor opacidade.</div>
+      </div>
+    </div>
+
+    <!-- Circle Outline -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--black);">
+        <div style="width:120px; height:120px; border:2px solid rgba(255,255,255,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+          <div style="width:80px; height:80px; border:1.5px solid rgba(233,30,99,0.2); border-radius:50%;"></div>
+        </div>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Círculos Concêntricos</div>
+        <div class="pattern-desc">Elemento decorativo sutil. Círculos com borda fina (2px) em branco ou pink com baixa opacidade. Posicionados geralmente no canto superior direito.</div>
+      </div>
+    </div>
+
+    <!-- Dots Grid -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--black);">
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:8px;">
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:12px;height:12px;border-radius:50%;background:var(--pink-dark); margin:-3px;"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+        </div>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Grid de Pontos</div>
+        <div class="pattern-desc">Padrão de pontos (4–5px) em grid com opacidade baixa. Um ponto destacado em pink sólido (12px). Usado no canto inferior direito como textura de apoio.</div>
+      </div>
+    </div>
+
+    <!-- Line Accent -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--cream);">
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="width:40px; height:2px; background:var(--pink-primary);"></div>
+            <span style="font-size:12px; font-weight:700; letter-spacing:4px; color:var(--pink-primary);">TÉCNICA</span>
+          </div>
+          <div style="width:60px; height:3px; background:var(--black); border-radius:2px;"></div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div style="width:6px; height:6px; border-radius:50; background:var(--gray-300);"></div>
+            <div style="width:24px; height:4px; background:var(--pink-primary); border-radius:2px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Linhas & Traços</div>
+        <div class="pattern-desc">Linhas horizontais finas (2–3px) como separadores e prefixos de tags. Usadas em pink para indicadores de seção e em preto como dividers de conteúdo.</div>
+      </div>
+    </div>
+
+    <!-- Slide Number -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--black);">
+        <div style="display:flex; gap:32px; align-items:center;">
+          <span style="font-size:13px; font-weight:500; letter-spacing:3px; color:var(--gray-400);">01 / 04</span>
+          <span style="font-size:13px; font-weight:500; letter-spacing:3px; color:var(--gray-400);">02 / 02</span>
+          <span style="font-family:var(--font-body); font-size:13px; font-weight:500; color:var(--gray-400);">03 — 03</span>
+        </div>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Numeração de Slides</div>
+        <div class="pattern-desc">Padrão "NN / NN" ou "NN — NN" em peso médio, espaçamento amplo, posicionado no canto superior (direito ou esquerdo). Indica posição no carrossel.</div>
+      </div>
+    </div>
+
+    <!-- Big Number Watermark -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--cream); position:relative; overflow:hidden;">
+        <span style="font-family:var(--font-display); font-size:160px; color:rgba(0,0,0,0.04); position:absolute; right:-10px; bottom:-30px; line-height:1;">02</span>
+        <span style="font-family:var(--font-display); font-size:36px; color:var(--black); position:relative; z-index:1;">CONTEÚDO</span>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Número Marca d'Água</div>
+        <div class="pattern-desc">Número grande (120–200px) em opacidade muito baixa (3–5%) no canto inferior direito. Funciona como referência de slide e textura visual de fundo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 04 — TEMAS / FUNDOS                         -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section-dark">
+  <div class="section-inner">
+    <span class="section-number">04</span>
+    <div class="section-tag">Temas</div>
+    <h2 class="section-title" style="color:var(--white);">TRÊS <span>SUPERFÍCIES</span></h2>
+    <p class="section-desc">
+      O sistema visual opera com três temas de fundo distintos, cada um com suas regras de contraste e uso de cor.
+    </p>
+
+    <div class="layout-demo">
+      <!-- Dark Theme -->
+      <div class="layout-card layout-card-dark" style="position:relative; overflow:hidden;">
+        <div class="diagonal-stripe"></div>
+        <div style="position:relative; z-index:2;">
+          <span style="font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gray-500); margin-bottom:12px; display:block;">Tema</span>
+          <span style="font-family:var(--font-display); font-size:48px; color:var(--white); line-height:0.92; display:block;">DARK</span>
+          <span style="font-family:var(--font-display); font-size:48px; color:var(--pink-primary); line-height:0.92; display:block;">MODE</span>
+          <p style="font-size:13px; color:var(--gray-400); margin-top:16px; line-height:1.5;">Fundo #0A0A0A. Usado como slide de abertura, capas e slides de impacto. Texto em branco, destaque em pink.</p>
+        </div>
+      </div>
+
+      <!-- Cream Theme -->
+      <div class="layout-card layout-card-cream">
+        <span style="font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gray-400); margin-bottom:12px; display:block;">Tema</span>
+        <span style="font-family:var(--font-display); font-size:48px; color:var(--black); line-height:0.92; display:block;">LIGHT</span>
+        <span style="font-family:var(--font-display); font-size:48px; color:var(--pink-primary); line-height:0.92; display:block;">MODE</span>
+        <p style="font-size:13px; color:var(--gray-500); margin-top:16px; line-height:1.5;">Fundo #F5F1EC. Usado para slides de conteúdo/dicas. Texto em preto, destaque em pink. Elemento diagonal pink no canto superior direito.</p>
+      </div>
+
+      <!-- Pink Theme -->
+      <div class="layout-card layout-card-pink" style="grid-column: 1 / -1;">
+        <span style="font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:12px; display:block;">Tema</span>
+        <span style="font-family:var(--font-display); font-size:64px; color:var(--white); line-height:0.92; display:block;">PINK MODE</span>
+        <p style="font-size:14px; color:rgba(255,255,255,0.85); margin-top:20px; line-height:1.6; max-width:500px;">Fundo #E91E63. Reservado para CTAs, slides de encerramento e chamadas para ação. Texto e botões em branco. Elementos decorativos em branco com opacidade.</p>
+        <div style="margin-top:24px;">
+          <span class="demo-cta demo-cta-primary">Aula experimental grátis <span class="demo-cta-arrow"></span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 05 — COMPONENTES                            -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="divider"></div>
+<section class="section">
+  <span class="section-number">05</span>
+  <div class="section-tag">Componentes</div>
+  <h2 class="section-title">PADRÕES DE <span>COMPONENTES</span></h2>
+  <p class="section-desc">
+    Componentes recorrentes nos materiais da LA Music School com suas especificações de estilo, espaçamento e hierarquia.
+  </p>
+
+  <div class="pattern-grid" style="margin-bottom:48px;">
+    <!-- Category Tag -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--cream); flex-direction:column; gap:20px; align-items:flex-start;">
+        <div class="demo-category-tag">TÉCNICA</div>
+        <div class="demo-category-tag">DICAS DE TÉCNICA</div>
+        <div class="demo-category-tag" style="color:var(--pink-primary);">TÉCNICA & VELOCIDADE</div>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Tag de Categoria</div>
+        <div class="pattern-desc">Montserrat 700, 12px, tracking 4px, uppercase. Prefixo com linha de 32–40px em pink. Cor: #E91E63.</div>
+      </div>
+    </div>
+
+    <!-- Dica Label -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--black); flex-direction:column; gap:16px; align-items:flex-start;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:44px; height:44px; background:var(--pink-primary); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+            <span style="color:white; font-size:18px;">☀</span>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--pink-primary);">DICA 01</div>
+            <div style="font-size:14px; font-weight:800; color:var(--white);">PRESSÃO CERTA</div>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gray-400);">DICA 02 — MOVIMENTO</div>
+        </div>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Label de Dica</div>
+        <div class="pattern-desc">Formato "DICA NN — TÍTULO" ou com ícone. Numeração em pink, título em branco ou preto. Ícone em card 44px com fundo pink e border-radius 10px.</div>
+      </div>
+    </div>
+
+    <!-- Check Items -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--black); flex-direction:column; gap:14px; align-items:flex-start;">
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <div style="width:22px; height:22px; border-radius:50%; background:var(--pink-primary); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;">
+            <span style="color:white; font-size:11px;">✓</span>
+          </div>
+          <span style="font-size:14px; color:var(--gray-300); line-height:1.5;">O movimento <strong style="color:var(--white);">nasce no pulso</strong>, não no cotovelo.</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <div style="width:22px; height:22px; border-radius:50%; background:var(--pink-primary); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;">
+            <span style="color:white; font-size:11px;">✓</span>
+          </div>
+          <span style="font-size:14px; color:var(--gray-300); line-height:1.5;">Velocidade vem de <strong style="color:var(--white);">eficiência</strong>, não de força.</span>
+        </div>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Lista de Checks</div>
+        <div class="pattern-desc">Bullet com checkmark em círculo pink (22px). Texto em cinza claro com palavras-chave em bold branco. Gap 12px entre ícone e texto.</div>
+      </div>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--pink-primary); flex-direction:column; gap:16px;">
+        <button class="demo-cta demo-cta-primary">Aula experimental grátis <span class="demo-cta-arrow"></span></button>
+        <button class="demo-cta demo-cta-outline">Fale com a escola</button>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Botões CTA</div>
+        <div class="pattern-desc">Border-radius: 40px (pill). Primário: fundo branco, texto pink, com ícone seta em círculo pink. Outline: borda branca 2px, texto branco. Padding: 16px 36px.</div>
+      </div>
+    </div>
+
+    <!-- Tip Badge -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--cream); flex-direction:column; gap:12px;">
+        <div class="demo-badge demo-badge-dark" style="border-radius:30px;">
+          <span style="color:var(--pink-primary); font-weight:800;">Teste rápido:</span>
+          <span style="font-weight:400;">se sua mão cansa em 30 segundos...</span>
+        </div>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Badge de Dica Rápida</div>
+        <div class="pattern-desc">Fundo preto, border-radius 30px. Prefixo em pink bold + texto em branco regular. Usado para "Teste rápido" ou micro-dicas práticas.</div>
+      </div>
+    </div>
+
+    <!-- Logo Footer -->
+    <div class="pattern-card">
+      <div class="pattern-preview" style="background:var(--cream); flex-direction:column; gap:20px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:28px; height:28px; border:2px solid var(--black); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+            <div style="width:6px; height:6px; background:var(--pink-primary); border-radius:50%;"></div>
+          </div>
+          <span style="font-weight:700; font-size:13px; letter-spacing:1.5px;">LA Music School</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:28px; height:28px; background:var(--pink-primary); border-radius:6px; display:flex; align-items:center; justify-content:center;">
+            <span style="color:white; font-weight:800; font-size:11px;">LA</span>
+          </div>
+          <span style="font-weight:700; font-size:13px;">LA Music School</span>
+        </div>
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Logo Footer</div>
+        <div class="pattern-desc">Duas variações: (1) Círculo outline com ponto pink + nome. (2) Quadrado pink com border-radius 6px + iniciais "LA" + nome. Posicionado no rodapé dos slides.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 06 — ESPAÇAMENTO                            -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section-dark">
+  <div class="section-inner">
+    <span class="section-number">06</span>
+    <div class="section-tag">Espaçamento</div>
+    <h2 class="section-title" style="color:var(--white);">ESCALA DE <span>ESPAÇO</span></h2>
+    <p class="section-desc">
+      Base 8px. Espaçamento generoso entre elementos para manter respiro visual. Títulos usam line-height comprimido (0.9–0.95), corpo de texto usa line-height expandido (1.6–1.7).
+    </p>
+
+    <div class="spacing-grid">
+      <div class="spacing-row">
+        <span class="spacing-label" style="color:var(--gray-300);">xs</span>
+        <div class="spacing-bar" style="width:4px;"></div>
+        <span class="spacing-value">4px</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label" style="color:var(--gray-300);">sm</span>
+        <div class="spacing-bar" style="width:8px;"></div>
+        <span class="spacing-value">8px</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label" style="color:var(--gray-300);">md</span>
+        <div class="spacing-bar" style="width:16px;"></div>
+        <span class="spacing-value">16px</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label" style="color:var(--gray-300);">lg</span>
+        <div class="spacing-bar" style="width:24px;"></div>
+        <span class="spacing-value">24px</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label" style="color:var(--gray-300);">xl</span>
+        <div class="spacing-bar" style="width:32px;"></div>
+        <span class="spacing-value">32px</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label" style="color:var(--gray-300);">2xl</span>
+        <div class="spacing-bar" style="width:48px;"></div>
+        <span class="spacing-value">48px</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label" style="color:var(--gray-300);">3xl</span>
+        <div class="spacing-bar" style="width:64px;"></div>
+        <span class="spacing-value">64px</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label" style="color:var(--gray-300);">4xl</span>
+        <div class="spacing-bar" style="width:100px;"></div>
+        <span class="spacing-value">100px</span>
+      </div>
+    </div>
+
+    <h3 style="font-weight:800; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--gray-400); margin-top:64px; margin-bottom:24px;">Line Height</h3>
+    <table class="token-table" style="max-width:600px;">
+      <thead>
+        <tr>
+          <th>Contexto</th>
+          <th>Line Height</th>
+          <th>Uso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--white);">Display / Hero</td>
+          <td><span class="token-name">0.90</span></td>
+          <td style="color:var(--gray-400);">Títulos gigantes, comprimidos</td>
+        </tr>
+        <tr>
+          <td style="color:var(--white);">Heading H1–H2</td>
+          <td><span class="token-name">0.92–0.95</span></td>
+          <td style="color:var(--gray-400);">Headlines de slide</td>
+        </tr>
+        <tr>
+          <td style="color:var(--white);">Heading H3</td>
+          <td><span class="token-name">1.0–1.1</span></td>
+          <td style="color:var(--gray-400);">Subtítulos</td>
+        </tr>
+        <tr>
+          <td style="color:var(--white);">Body text</td>
+          <td><span class="token-name">1.6–1.7</span></td>
+          <td style="color:var(--gray-400);">Parágrafos, descrições</td>
+        </tr>
+        <tr>
+          <td style="color:var(--white);">Tags / Labels</td>
+          <td><span class="token-name">1.0</span></td>
+          <td style="color:var(--gray-400);">Single-line labels</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 07 — TOKENS CSS                             -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="divider"></div>
+<section class="section">
+  <span class="section-number">07</span>
+  <div class="section-tag">Tokens</div>
+  <h2 class="section-title">DESIGN <span>TOKENS</span></h2>
+  <p class="section-desc">
+    Variáveis CSS e valores de referência para implementação consistente em todos os materiais e plataformas da LA Music School.
+  </p>
+
+  <table class="token-table">
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Valor</th>
+        <th>Contexto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="token-name">--pink-primary</span></td>
+        <td><span class="token-swatch" style="background:#E91E63;"></span>#E91E63</td>
+        <td>Cor de destaque principal</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--pink-dark</span></td>
+        <td><span class="token-swatch" style="background:#C2185B;"></span>#C2185B</td>
+        <td>Hover states, ênfase</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--pink-light</span></td>
+        <td><span class="token-swatch" style="background:#F06292;"></span>#F06292</td>
+        <td>Elementos suaves</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--black</span></td>
+        <td><span class="token-swatch" style="background:#0A0A0A;"></span>#0A0A0A</td>
+        <td>Fundo escuro, texto sobre claro</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--black-card</span></td>
+        <td><span class="token-swatch" style="background:#141414;"></span>#141414</td>
+        <td>Cards sobre fundo escuro</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--cream</span></td>
+        <td><span class="token-swatch" style="background:#F5F1EC; border-color:#ddd;"></span>#F5F1EC</td>
+        <td>Fundo claro principal</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--white</span></td>
+        <td><span class="token-swatch" style="background:#FFFFFF; border-color:#ddd;"></span>#FFFFFF</td>
+        <td>Cards, botões, texto sobre escuro</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--font-display</span></td>
+        <td colspan="2">'Bebas Neue', 'Impact', sans-serif</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--font-body</span></td>
+        <td colspan="2">'Montserrat', 'Helvetica Neue', sans-serif</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--radius-pill</span></td>
+        <td>40px</td>
+        <td>Botões CTA</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--radius-card</span></td>
+        <td>16px</td>
+        <td>Cards de conteúdo</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--radius-icon</span></td>
+        <td>10px</td>
+        <td>Ícones / avatares</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--skew-angle</span></td>
+        <td>-8deg</td>
+        <td>Diagonal stripe</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--tracking-tag</span></td>
+        <td>4px</td>
+        <td>Letter-spacing de tags</td>
+      </tr>
+      <tr>
+        <td><span class="token-name">--tracking-label</span></td>
+        <td>2px</td>
+        <td>Letter-spacing de labels</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 08 — REGRAS DE USO                          -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section-dark">
+  <div class="section-inner">
+    <span class="section-number">08</span>
+    <div class="section-tag">Regras</div>
+    <h2 class="section-title" style="color:var(--white);">PRINCÍPIOS DE <span>USO</span></h2>
+    <p class="section-desc">
+      Diretrizes para manter a consistência visual em todos os materiais produzidos para a LA Music School.
+    </p>
+
+    <div class="rule-grid" style="margin-bottom:48px;">
+      <div class="rule-card">
+        <div class="rule-icon">🎯</div>
+        <div class="rule-title" style="color:var(--white);">Contraste é tudo</div>
+        <div class="rule-text">Preto contra pink. Títulos gigantes contra corpo discreto. O material da LA vive do contraste extremo entre peso, tamanho e cor.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">✨</div>
+        <div class="rule-title" style="color:var(--white);">Palavra-chave em destaque</div>
+        <div class="rule-text">Sempre pinte a palavra mais importante do título em pink. Isso cria hierarquia instantânea e direciona o olhar.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">📐</div>
+        <div class="rule-title" style="color:var(--white);">Respiro generoso</div>
+        <div class="rule-text">Nunca aperte os elementos. Mantenha margens amplas (mín. 40px), espaço entre título e corpo (mín. 24px), e áreas "vazias" intencionais.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">🔤</div>
+        <div class="rule-title" style="color:var(--white);">Uppercase com propósito</div>
+        <div class="rule-text">Display fonts sempre em CAIXA ALTA. Tags e labels em UPPERCASE com tracking amplo. Corpo de texto em sentence case normal.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">🎨</div>
+        <div class="rule-title" style="color:var(--white);">Paleta restrita</div>
+        <div class="rule-text">Máximo de 3 cores por slide: fundo + texto + destaque. Não adicionar cores fora da paleta. O pink é a ÚNICA cor de destaque.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">📱</div>
+        <div class="rule-title" style="color:var(--white);">Mobile-first nos carrosséis</div>
+        <div class="rule-text">Proporção 1:1 (1080×1080) ou 4:5 para Instagram. Textos legíveis em tela pequena. Tamanho mínimo de corpo: 14px equivalente.</div>
+      </div>
+    </div>
+
+    <div class="do-dont-grid">
+      <div class="do-card">
+        <h4>✓ Fazer</h4>
+        <ul>
+          <li>Usar Bebas Neue para todos os títulos</li>
+          <li>Manter a diagonal pink como assinatura visual</li>
+          <li>Alternar entre tema dark e cream nos carrosséis</li>
+          <li>Usar numeração (01/04) nos slides</li>
+          <li>Destacar UMA palavra-chave em pink por título</li>
+          <li>Manter o logo LA no rodapé de cada slide</li>
+          <li>Usar checks em círculo pink para listas</li>
+        </ul>
+      </div>
+      <div class="dont-card">
+        <h4>✕ Não Fazer</h4>
+        <ul>
+          <li>Usar fontes diferentes das especificadas</li>
+          <li>Aplicar gradientes no texto ou nos fundos</li>
+          <li>Usar mais de uma cor de destaque</li>
+          <li>Colocar texto em caixa baixa nos títulos</li>
+          <li>Omitir a diagonal nos slides dark</li>
+          <li>Usar imagens de fundo sem tratamento</li>
+          <li>Misturar temas no mesmo slide</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 09 — ESTRUTURA DE CARROSSEL                 -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="divider"></div>
+<section class="section">
+  <span class="section-number">09</span>
+  <div class="section-tag">Estrutura</div>
+  <h2 class="section-title">ANATOMIA DO <span>CARROSSEL</span></h2>
+  <p class="section-desc">
+    Sequência padrão de slides para conteúdo educativo no Instagram da LA Music School, baseada nos materiais analisados.
+  </p>
+
+  <table class="token-table" style="margin-bottom:48px;">
+    <thead>
+      <tr>
+        <th>Slide</th>
+        <th>Tema</th>
+        <th>Função</th>
+        <th>Elementos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:800;">01 — Capa</td>
+        <td>Dark</td>
+        <td>Gerar curiosidade e parada no feed</td>
+        <td>Diagonal pink · Título grande · Tag de categoria · Subtítulo · Logo · "Deslize →"</td>
+      </tr>
+      <tr>
+        <td style="font-weight:800;">02–(N-1) — Conteúdo</td>
+        <td>Cream ou Dark</td>
+        <td>Entregar o conteúdo principal</td>
+        <td>Número de dica · Título · Corpo de texto · Checks / bullet points · Badge de dica · Numeração</td>
+      </tr>
+      <tr>
+        <td style="font-weight:800;">N — CTA Final</td>
+        <td>Pink</td>
+        <td>Converter para ação</td>
+        <td>Headline "QUER VIVER ISSO?" · Subtítulo · Botão CTA pill · Logo · Círculos decorativos</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="rule-grid">
+    <div class="rule-card">
+      <div class="rule-icon">🔄</div>
+      <div class="rule-title">Alternância de Temas</div>
+      <div class="rule-text">Para carrosséis com 4+ slides de conteúdo, alternar entre cream e dark para manter ritmo visual e evitar monotonia.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">📍</div>
+      <div class="rule-title">Posição Fixa do Logo</div>
+      <div class="rule-text">Logo sempre no rodapé, alinhado à direita (slides cream/dark) ou centralizado (slide pink CTA). Nunca omitir.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🔢</div>
+      <div class="rule-title">Numeração Consistente</div>
+      <div class="rule-text">Formato "NN / NN" no canto superior. Incluir em todos os slides. Fonte: Montserrat 500, 13px, tracking 2–3px, cinza médio.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FOOTER                                      -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section-pink">
+  <div class="section-inner" style="text-align:center;">
+    <div style="margin-bottom:32px;">
+      <div style="width:60px; height:60px; border:3px solid var(--white); border-radius:50%; display:inline-flex; align-items:center; justify-content:center;">
+        <div style="width:12px; height:12px; background:var(--white); border-radius:50%;"></div>
+      </div>
+    </div>
+    <h2 style="font-family:var(--font-display); font-size:clamp(40px, 6vw, 72px); line-height:0.95; color:var(--white); margin-bottom:20px;">LA MUSIC SCHOOL</h2>
+    <p style="font-size:14px; color:rgba(255,255,255,0.7); letter-spacing:3px; text-transform:uppercase;">Design System v1.0 · Abril 2026</p>
+    <p style="font-size:13px; color:rgba(255,255,255,0.5); margin-top:8px;">Campo Grande · Recreio · Barra da Tijuca</p>
+  </div>
+</section>
+
+</body>
+</html>
