@@ -1,6 +1,6 @@
 ---
 name: montagem-carrossel
-description: Skill para montar carrosséis em HTML/JSX (1080x1350) seguindo rigorosamente o Design System da marca, combinando assets da Luna, copy do Theo e briefing da Nina. Use sempre que Diego precisa montar um carrossel para qualquer marca.
+description: Skill para montar carrosséis em HTML/JSX (1080x1440, formato 3:4 — padrão 2026) seguindo rigorosamente o Design System da marca, combinando assets da Luna, copy do Theo e briefing da Nina. Use sempre que Diego precisa montar um carrossel para qualquer marca.
 ---
 
 # Montagem de Carrossel
@@ -18,7 +18,7 @@ description: Skill para montar carrosséis em HTML/JSX (1080x1350) seguindo rigo
 ## Saída
 | Campo | Tipo | Destino |
 |-------|------|---------|
-| png_slides[] | arquivos PNG 1080x1350 | Supabase Storage |
+| png_slides[] | arquivos PNG 1080x1440 | Supabase Storage |
 | html_slides[] | arquivos HTML | Backup para edição futura |
 | output_registro | registro | Supabase → tabela outputs |
 | preview_carrossel | lista URLs | Nina → aprovação |
@@ -37,74 +37,39 @@ Se faltar qualquer input, **não improvisar** — pedir para Nina/Luna/Theo comp
 
 ### Fase 2 — Carregar Design System da Marca
 
-#### 🎸 LA Music School
-```css
-:root {
-  --bg-dark: #0A0A0A;
-  --bg-cream: #F5F1EC;
-  --bg-pink: #E91E63;
-  --text-white: #FFFFFF;
-  --text-dark: #1A1A1A;
-  --accent: #E91E63;
-  --accent-dark: #C2185B;
-  --accent-light: #F06292;
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body: 'Montserrat', sans-serif;
-  --radius: 0px;          /* School = angulado, sem arredondamento */
-  --diagonal-angle: -8deg; /* faixa diagonal pink */
-}
-```
-- Capa: fundo dark, título Bebas Neue uppercase, palavra-chave em pink
-- Conteúdo: alternar dark/cream, Montserrat para corpo
-- CTA: fundo pink, botão pill branco, @lamusicschool
-- Elementos: diagonal stripe, circles, badges numerados
+**Princípio canônico:** O Design System (HTML em `/home/lahq/agents/shared/design-systems/`) é a **única fonte de verdade** para cores, tipografia, espaçamentos, border-radius e elementos gráficos. Esta skill NÃO define tokens — apenas consome os do DS.
 
-#### 🧠 SonoraMente LA
-```css
-:root {
-  --bg-deep: #3D1A6E;
-  --bg-light: #FAF8FF;
-  --bg-purple: #5B2D8E;
-  --text-white: #FFFFFF;
-  --text-dark: #2D1B4E;
-  --accent: #5B2D8E;
-  --accent-light: #B39DDB;
-  --warm: #F4A261;
-  --font-display: 'Playfair Display', serif;
-  --font-body: 'DM Sans', sans-serif;
-  --radius: 16px;          /* SonoraMente = arredondado, suave */
-}
-```
-- Capa: fundo roxo profundo, título Playfair Display, tag lavanda
-- Conteúdo: alternar light/roxo, DM Sans para corpo
-- CTA: fundo roxo, botão branco pill, @sonoramentela
-- Elementos: gradientes suaves, ondas sonoras, bordas arredondadas
+**Procedimento obrigatório por briefing:**
 
-#### 🎨 LA Music Kids
-```css
-:root {
-  --bg-white: #FFFFFF;
-  --bg-dark: #1A1A1A;
-  --bg-blue: #00AFEF;
-  --color-1: #FF6B35;      /* laranja catavento */
-  --color-2: #4ECDC4;      /* turquesa */
-  --color-3: #FFE66D;      /* amarelo sol */
-  --color-4: #FF6B9D;      /* rosa catavento */
-  --text-dark: #2D3436;
-  --text-white: #FFFFFF;
-  --font-display: 'Baloo 2', cursive;
-  --font-body: 'Nunito', sans-serif;
-  --radius: 20px;           /* Kids = super arredondado */
-}
-```
-- Capa: fundo dark ou azul, título Baloo 2, ondas coloridas
-- Conteúdo: alternar branco/dark, badges coloridos, Nunito para corpo
-- CTA: fundo azul, botão amarelo, @lamusickids
-- Elementos: barra 4 cores, catavento, notas musicais coloridas
+1. Ler o campo `marca` do briefing (`la-music-school`, `la-music-kids` ou `sonoramente`)
+2. Carregar o arquivo DS correspondente:
+   ```
+   /home/lahq/agents/shared/design-systems/la-music-school-design-system.html
+   /home/lahq/agents/shared/design-systems/la-music-kids-design-system.html
+   /home/lahq/agents/shared/design-systems/sonoramente-design-system.html
+   ```
+3. Extrair do DS:
+   - Paleta completa (cores primárias, secundárias, neutras)
+   - Tokens tipográficos (`--font-display`, `--font-body`, `--font-script` quando existir)
+   - `border-radius` padrão da marca
+   - Temas disponíveis (ex: Dark, Light, Brand para School / Branco, Dark, Azul Kids / Roxo Profundo, Light, Roxo Mode)
+   - Elementos gráficos assinatura (ex: diagonal -8° da School, ondas coloridas do Kids, gradientes do SonoraMente)
+4. Consultar também o Brand Guide da marca em `/home/lahq/agents/shared/brand-guides/` para diretrizes de uso (quais cores em quais contextos, tom de voz visual).
+
+**Resumo de identidade por marca (referência rápida — tokens reais vêm do DS):**
+
+| Marca | Tom visual | Radius | Font-display |
+|---|---|---|---|
+| LA Music School | Impactante, rock, angular | 0px (sem arredondamento) | Prompt (Google Fonts OFL) |
+| SonoraMente LA | Acolhedor, científico, suave | 16px | Playfair Display + DM Sans |
+| LA Music Kids | Divertido, lúdico, arredondado | 20px+ | Família Volkswagen FREE (7 pesos) + Madelina script |
+
+⚠️ **NUNCA hardcodear cores, fontes ou tokens nesta skill.** Se encontrar uma cor não documentada no DS, pedir para Nina (guardião de design systems) validar antes de usar. Cores inventadas quebram a identidade da marca.
+
 
 ### Fase 3 — Montar HTML/JSX por Slide
 
-**Cada slide é um arquivo HTML independente de 1080x1350px.**
+**Cada slide é um arquivo HTML independente de 1080x1440px (formato 3:4 — padrão 2026).**
 
 **Estrutura base de um slide:**
 ```html
@@ -119,7 +84,7 @@ Se faltar qualquer input, **não improvisar** — pedir para Nina/Luna/Theo comp
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       width: 1080px;
-      height: 1350px;
+      height: 1440px;
       overflow: hidden;
       font-family: var(--font-body);
     }
@@ -129,16 +94,17 @@ Se faltar qualquer input, **não improvisar** — pedir para Nina/Luna/Theo comp
     .slide {
       width: 100%;
       height: 100%;
-      padding: 60px;
+      padding: 180px 50px; /* Safe zones 2026: 180px topo/base, 50px laterais */
       display: flex;
       flex-direction: column;
       justify-content: center;
       position: relative;
     }
     
-    /* Margens mínimas: 40px em todos os lados */
-    /* Texto mínimo: 14px (body), títulos: 36px+ */
-    /* Numeração: posição fixa, formato NN/NN */
+    /* Safe zones 2026: 180px topo/base, 50px laterais */
+    /* Texto mínimo: 24px (corpo), títulos: 120px+ */
+    /* REGRA DE OURO: nenhum texto abaixo de 24px no canvas */
+    /* Numeração: posição fixa, formato NN/NN, mínimo 18px */
   </style>
 </head>
 <body>
@@ -158,8 +124,10 @@ Se faltar qualquer input, **não improvisar** — pedir para Nina/Luna/Theo comp
 | **CTA (último)** | Converter | Headline de fechamento, botão pill com CTA, logo, @perfil, numeração |
 
 **Regras de composição:**
-- Margens mínimas: **40px** em todos os lados (60px ideal)
-- Hierarquia: título (36-48px) > subtítulo (24-28px) > corpo (16-20px) > caption (14px)
+- Safe zones 2026: **180px** topo/base, **50px** laterais
+- Hierarquia: título (120-160px) > subtítulo (36-44px) > corpo (24-30px) > badge/tag (16-20px) > caption (16-18px)
+- REGRA DE OURO: nenhum texto abaixo de **24px** no canvas (ilegível no celular após downscale)
+- Se renderizar HD 2x (2160×2880): DOBRAR todos os valores de tipografia
 - Numeração consistente: formato `01/08` — posição fixa (topo-direita ou rodapé)
 - Logo no rodapé de TODOS os slides (pequeno, 40-60px)
 - Imagens sempre em base64 (nunca URL — ver skill exportacao-renderizacao)
@@ -174,7 +142,7 @@ const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
 
 for (let i = 0; i < totalSlides; i++) {
   const page = await browser.newPage();
-  await page.setViewport({ width: 1080, height: 1350, deviceScaleFactor: 2 });
+  await page.setViewport({ width: 1080, height: 1440, deviceScaleFactor: 2 });
   await page.goto(`file://${htmlPaths[i]}`, { waitUntil: 'networkidle0' });
   await page.evaluateHandle('document.fonts.ready');
   await page.waitForTimeout(500);
@@ -208,18 +176,18 @@ INSERT INTO outputs (
   file_urls, total_slides,
   rendered_by, status, created_at
 ) VALUES (
-  $1, $2, $3, 'carrossel', '1080x1350',
+  $1, $2, $3, 'carrossel', '1080x1440',
   $4::text[], $5,
   'diego', 'ready_for_review', NOW()
 );
 ```
 
-→ Enviar preview para Nina aprovar (skill aprovacao-outputs).
+→ Formato: `1080x1440` (3:4 — padrão 2026).
 
 ## Veto Conditions — NUNCA
 - NUNCA iniciar sem briefing completo da Nina (estrutura + copy + assets)
 - NUNCA improvisar cor ou fonte fora do Design System da marca
-- NUNCA usar texto menor que 14px (ilegível em mobile)
+- NUNCA usar texto menor que 24px no canvas (ilegível em mobile após downscale HD)
 - NUNCA sem logo no rodapé de cada slide
 - NUNCA entregar sem testar renderização no Puppeteer
 - NUNCA sem numeração de slides consistente (NN/NN)
@@ -229,7 +197,7 @@ INSERT INTO outputs (
 ## Checklist de Conclusão
 - [ ] Todos os inputs recebidos (briefing Nina, assets Luna, copy Theo)
 - [ ] Design System da marca carregado e aplicado corretamente
-- [ ] Cada slide montado em HTML independente (1080x1350)
+- [ ] Cada slide montado em HTML independente (1080x1440, formato 3:4)
 - [ ] Alternância de temas entre slides respeitada
 - [ ] Capa com gancho forte + slide final com CTA claro
 - [ ] Imagens convertidas para base64
