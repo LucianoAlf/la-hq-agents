@@ -108,7 +108,7 @@ diversão · brincando · descoberta · ritmo · melodia · primeiro passo · m�
 
 - **Display e corpo:** família **Volkswagen** — arredondada, geométrica, alta legibilidade. Disponível em 7 pesos cobrindo todo o espectro tipográfico (títulos de impacto até descrições sutis).
 - **Script emocional:** **Madelina** — handlettering manuscrita. Usada pontualmente para palavras emocionais ou destaques fluidos (ex: "abertas!", "Chama!", "escutado"). Combina com Volkswagen criando contraste lúdico. Usar no máximo 1-2 vezes por peça — não empilhar.
-- **Logo:** usa desenho próprio (não Volkswagen nem Madelina) — sempre usar os SVGs em `logos-lahq/`, nunca recriar com fonte.
+- **Logo:** usa desenho próprio (não Volkswagen nem Madelina) — sempre usar os SVGs em `shared/brand-assets/logos/kids/`, nunca recriar com fonte.
 
 **Localização dos arquivos na VPS:**
 ```

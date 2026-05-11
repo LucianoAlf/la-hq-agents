@@ -34,9 +34,9 @@ const AGENT_IDS = {
 };
 
 const BRAND_GUIDES = {
-  'la-music-school': 'shared/brands/brand-la-music-school.md',
-  'la-music-kids':   'shared/brands/brand-la-music-kids.md',
-  'sonoramente':     'shared/brands/brand-sonoramente.md',
+  'la-music-school': 'shared/brand-guides/brand-la-music-school.md',
+  'la-music-kids':   'shared/brand-guides/brand-la-music-kids.md',
+  'sonoramente':     'shared/brand-guides/brand-sonoramente.md',
 };
 
 function loadFile(relativePath) {

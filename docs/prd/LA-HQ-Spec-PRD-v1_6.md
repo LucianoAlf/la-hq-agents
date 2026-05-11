@@ -307,9 +307,8 @@ Além disso, todos os agentes têm acesso aos **Brand Guides** compartilhados:
 │   │   ├── la-music-kids-design-system.html (~617 KB, v4)
 │   │   └── sonoramente-design-system.html   (~208 KB, v2)
 │   └── brand-assets/
-│       ├── logos-lahq/                      (21 SVGs — School + Kids)
-│       ├── logos/sonora/                    (9 SVGs — SonoraMente)
-│       └── fonts/kids/                      (Volkswagen FREE 7 pesos + Madelina)
+│       ├── logos/                           (school, kids, sonoramente — SVGs oficiais)
+│       └── fonts/                           (school/Prompt, kids/Volkswagen FREE + Madelina)
 ├── shared/checklists/
 │   ├── checklist-qualidade-visual.md      (Nina, Diego)
 │   ├── checklist-qualidade-copy.md        (Nina, Theo)
@@ -342,7 +341,7 @@ Ao criar um novo agente, ele recebe:
 Cada marca atendida pelo Escritório de Marketing possui seu próprio Design System completo, que os agentes (especialmente Nina, Luna e Diego) devem seguir rigorosamente.
 
 ### LA Music School
-- **Arquivo:** `la-music-design-system.html` (DS v2 FIXED15, ~3.8 MB raw — agentes usam `stripBase64` pra carregar 80KB efetivo no prompt, Puppeteer carrega inteiro pra renderizar fontes)
+- **Arquivo:** `la-music-school-design-system-v2-abril-2026.html` (DS v2 FIXED15, ~3.8 MB raw — agentes usam `stripBase64` pra carregar 80KB efetivo no prompt, Puppeteer carrega inteiro pra renderizar fontes)
 - **Paleta oficial (extraída dos logos SVG):** Pink Primary **#E91451** (destaque principal), Black **#0A0A0A** (fundo escuro), Gray Light **#E8E8E8** (fundo claro — NÃO usar Cream #F5F1EC, obsoleto)
 - **Tipografia:** Família **Prompt** (Google Fonts OFL, 7 pesos carregados: Light 300, Regular 400, Medium 500, SemiBold 600, Bold 700, Black 900 — e as itálicas). Display sempre em uppercase com letter-spacing ajustado.
 - **Elementos visuais reais (auditados em peças de produção):**
@@ -672,7 +671,7 @@ ig_blocked_users (id, office_id, sender_ig_id, sender_username,
 ### Fase 1.7 — Limpeza Arquitetural (concluída 18-20/04/2026)
 - 14 skills limpas (hex/fonts obsoletos removidos, delegação ao Brand Guide + DS)
 - 3 SOULs reescritos v2 (Nina, Luna, Diego)
-- Migração `shared/brand-guides/` → `shared/brands/` em 7 scripts
+- Migração/correção dos scripts para `shared/brand-guides/` em 7 scripts
 - Padrão canônico: skills NUNCA replicam valores técnicos
 
 ### Fase 1.8 — Fix Diego + Pipeline E2E Validado (concluída 20/04/2026)
@@ -744,7 +743,7 @@ ig_blocked_users (id, office_id, sender_ig_id, sender_username,
 ---
 
 *Documento gerado em 12 de abril de 2026 · Última atualização: 20 de abril de 2026*
-*Versão 1.6 — Atualiza carrossel 1080x1440 (spec 2026), estrutura de arquivos com paths reais (shared/brands/, shared/design-systems/, shared/brand-assets/), nota sobre stripBase64 no DS School, SonoraMente DS v2/BG v2.1, Roadmap com Fases 1.5-1.8. 3 publicações reais no @lamusicschool.*
+*Versão 1.6 — Atualiza carrossel 1080x1440 (spec 2026), estrutura de arquivos com paths reais (shared/brand-guides/, shared/design-systems/, shared/brand-assets/), nota sobre stripBase64 no DS School, SonoraMente DS v2/BG v2.1, Roadmap com Fases 1.5-1.8. 3 publicações reais no @lamusicschool.*
 *Versões anteriores:*
 *- v1.5 (18/abr/2026): Monitoramento Instagram, DS School com valores SVG oficiais, DS Kids com Volkswagen FREE*
 *- v1.4 (12/abr/2026): Schema de banco expandido (9 tabelas novas), 4 Checklists, 34 Skills evoluídas*

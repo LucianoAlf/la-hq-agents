@@ -77,7 +77,7 @@ técnica · velocidade · precisão · prática · dica · pulso · corda · som
 
 ## Design System
 
-**Arquivo completo:** `/home/lahq/agents/shared/design-systems/la-music-design-system.html`
+**Arquivo completo:** `/home/lahq/agents/shared/design-systems/la-music-school-design-system-v2-abril-2026.html`
 
 ### Paleta
 

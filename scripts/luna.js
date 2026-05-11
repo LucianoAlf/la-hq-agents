@@ -23,9 +23,9 @@ const AGENT_IDS = {
   theo:  'c3d4e5f6-0006-4000-8000-000000000006',
 };
 const BRAND_GUIDES = {
-  'la-music-school': 'shared/brands/brand-la-music-school.md',
-  'la-music-kids':   'shared/brands/brand-la-music-kids.md',
-  'sonoramente':     'shared/brands/brand-sonoramente.md',
+  'la-music-school': 'shared/brand-guides/brand-la-music-school.md',
+  'la-music-kids':   'shared/brand-guides/brand-la-music-kids.md',
+  'sonoramente':     'shared/brand-guides/brand-sonoramente.md',
 };
 function loadFile(relativePath) {
   const fullPath = path.join(AGENTS_DIR, relativePath);

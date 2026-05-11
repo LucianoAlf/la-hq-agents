@@ -34,7 +34,11 @@ require('dotenv').config({ path: '/home/lahq/.env' });
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
 const AGENTS_DIR = '/home/lahq/agents';
-const LOGOS_DIR = '/home/lahq/agents/shared/brand-assets/logos-lahq';
+const LOGO_DIRS = {
+  'la-music-school': path.join(AGENTS_DIR, 'shared/brand-assets/logos/school'),
+  'la-music-kids': path.join(AGENTS_DIR, 'shared/brand-assets/logos/kids'),
+  'sonoramente': path.join(AGENTS_DIR, 'shared/brand-assets/logos/sonoramente'),
+};
 
 const OFFICE_ID = 'a1b2c3d4-0001-4000-8000-000000000001';
 const AGENT_IDS = {
@@ -43,7 +47,7 @@ const AGENT_IDS = {
 };
 
 const DS_PATHS = {
-  'la-music-school': AGENTS_DIR + '/shared/design-systems/la-music-design-system.html',
+  'la-music-school': AGENTS_DIR + '/shared/design-systems/la-music-school-design-system-v2-abril-2026.html',
   'la-music-kids':   AGENTS_DIR + '/shared/design-systems/la-music-kids-design-system.html',
   'sonoramente':     AGENTS_DIR + '/shared/design-systems/sonoramente-design-system.html',
 };
@@ -51,7 +55,7 @@ const DS_PATHS = {
 // === FONTES LOCAIS POR MARCA (fix: Puppeteer não tem fontes instaladas) ===
 const LOCAL_FONTS = {
   'la-music-kids': {
-    dir: '/home/lahq/agents/shared/brand-assets/fonts/kids',
+    dir: AGENTS_DIR + '/shared/brand-assets/fonts/kids',
     faces: [
       { family: 'Volkswagen', file: 'Volkswagen-Light.otf', weight: 300, style: 'normal', format: 'opentype' },
       { family: 'Volkswagen', file: 'Volkswagen-Regular.otf', weight: 400, style: 'normal', format: 'opentype' },
@@ -97,10 +101,10 @@ const LOGO_FILES = {
     'full-on-light': 'logo-la-music-kids-light-completa.svg',
   },
   'sonoramente': {
-    'solo-on-dark':  'logo-sonoramente-dark-solo.svg',
-    'solo-on-light': 'logo-sonoramente-light-solo.svg',
-    'full-on-dark':  'logo-sonoramente-v2-dark-completa.svg',
-    'full-on-light': 'logo-sonoramente-v2-light-completa.svg',
+    'solo-on-dark':  'logo-sonoramente-solo-white.svg',
+    'solo-on-light': 'logo-sonoramente-solo-black.svg',
+    'full-on-dark':  'logo-sonoramente-horizontal-white.svg',
+    'full-on-light': 'logo-sonoramente-horizontal-black.svg',
   },
 };
 
@@ -116,12 +120,12 @@ const BRAND_THEMES = {
     defaultTheme: 'dark',
     themes: {
       'dark':  '#0A0A0A',  // Black — fundo de impacto rock
-      'cream': '#F5F1EC',  // Cream — fundo claro angulado
-      'pink':  '#E91E63',  // Pink — cor-acento da marca
+      'light': '#E8E8E8',  // Gray Light — fundo claro neutro
+      'pink':  '#E91451',  // Pink — cor-acento da marca
     },
     aliases: {
       'dark-mode': 'dark', 'black': 'dark', 'preto': 'dark',
-      'light': 'cream', 'light-mode': 'cream', 'claro': 'cream', 'creme': 'cream',
+      'light-mode': 'light', 'claro': 'light', 'gray': 'light', 'cinza': 'light',
       'brand': 'pink', 'pink-mode': 'pink', 'rosa': 'pink',
     },
   },
@@ -223,7 +227,8 @@ function loadLogos(brand) {
 
   const logos = {};
   for (const [variant, filename] of Object.entries(mapping)) {
-    const filepath = path.join(LOGOS_DIR, filename);
+    const logoDir = LOGO_DIRS[brand] || LOGO_DIRS['la-music-school'];
+    const filepath = path.join(logoDir, filename);
     if (fs.existsSync(filepath)) {
       const svgContent = fs.readFileSync(filepath);
       const base64 = svgContent.toString('base64');
@@ -556,7 +561,7 @@ async function main() {
   console.log('[DIEGO] Contexto em camadas...');
   const soulMd = loadFile('diego/SOUL.md');
   const skillMd = loadFile('diego/skills/montagem-carrossel.md');
-  const brandGuide = loadFile(`shared/brands/brand-${myTask.brand}.md`);
+  const brandGuide = loadFile(`shared/brand-guides/brand-${myTask.brand}.md`);
   const dsPath = DS_PATHS[myTask.brand] || DS_PATHS['la-music-school'];
   console.log(`   SOUL: ${soulMd.length} | Skill: ${skillMd.length} | BG: ${brandGuide.length}`);
 

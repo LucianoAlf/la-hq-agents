@@ -35,13 +35,13 @@ const AGENT_IDS = {
 
 // Mapas de recursos por marca
 const BRAND_GUIDES = {
-  'la-music-school': 'shared/brands/brand-la-music-school.md',
-  'la-music-kids':   'shared/brands/brand-la-music-kids.md',
-  'sonoramente':     'shared/brands/brand-sonoramente.md',
+  'la-music-school': 'shared/brand-guides/brand-la-music-school.md',
+  'la-music-kids':   'shared/brand-guides/brand-la-music-kids.md',
+  'sonoramente':     'shared/brand-guides/brand-sonoramente.md',
 };
 
 const DESIGN_SYSTEMS = {
-  'la-music-school': 'shared/design-systems/la-music-design-system.html',
+  'la-music-school': 'shared/design-systems/la-music-school-design-system-v2-abril-2026.html',
   'la-music-kids':   'shared/design-systems/la-music-kids-design-system.html',
   'sonoramente':     'shared/design-systems/sonoramente-design-system.html',
 };

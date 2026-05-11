@@ -26,9 +26,9 @@ const AGENT_IDS = {
   tina:  'c3d4e5f6-0007-4000-8000-000000000007',
 };
 const BRAND_GUIDES = {
-  'la-music-school': 'shared/brands/brand-la-music-school.md',
-  'la-music-kids':   'shared/brands/brand-la-music-kids.md',
-  'sonoramente':     'shared/brands/brand-sonoramente.md',
+  'la-music-school': 'shared/brand-guides/brand-la-music-school.md',
+  'la-music-kids':   'shared/brand-guides/brand-la-music-kids.md',
+  'sonoramente':     'shared/brand-guides/brand-sonoramente.md',
 };
 // REGRAS DE CONSISTÊNCIA (anti-loop)
 const APPROVE_MIN_SCORE = 7;
