@@ -31,9 +31,11 @@ Fonte da verdade para produzir carrosséis da **LA Music School** no pipeline LA
    - CTA claro, sem texto genérico demais.
 
 3. **Imagem / Luna**
-   - Para técnica/instrumento: foto real/cinemática é obrigatória.
+   - Para técnica/instrumento: ter pelo menos 1 foto real/cinemática forte é recomendado.
+   - Em carrosséis educativos School, preferir **1 foto hero grande** ou no máximo **2 cards com foto**.
+   - Não espalhar foto em todo card só porque existe asset; o resultado fica menos elegante.
    - Prompt em inglês, sem texto, sem logo, sem watermark.
-   - Foto não precisa aparecer em todos os cards; identidade visual pode sustentar cards de conteúdo e CTA.
+   - Identidade visual, tipografia e símbolo LA oficial podem sustentar os demais cards.
 
 4. **Montagem / Diego**
    - Usar Prompt local.
@@ -62,6 +64,16 @@ O `LA` da School **não é texto**. É o símbolo oficial da logo.
   - se a referência ouro não usa repetição, não repetir.
 - O LA deve funcionar como massa gráfica/coadjuvante, não competir com título, foto ou CTA.
 - Opacidade sugerida do LA dominante: `6%–14%`; secundário, quando existir: `4%–8%`.
+
+## Carrossel contínuo / emendado
+
+Para testes avançados, pode criar carrossel com sensação de tela única recortada em cards:
+
+- Planejar uma composição horizontal contínua antes de cortar em cards.
+- Elementos grandes podem atravessar bordas entre cards, inclusive o símbolo oficial LA.
+- Exemplo: metade do `L` em um card e continuidade do `A` no card seguinte.
+- Manter cada card legível individualmente, mas com recompensa visual ao deslizar.
+- Usar com intenção; não aplicar em todo carrossel por padrão.
 
 ## O que NÃO usar
 
