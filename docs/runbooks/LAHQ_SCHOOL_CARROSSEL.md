@@ -58,14 +58,12 @@ O `LA` da School **não é texto**. É o símbolo oficial da logo.
 - Usar os SVGs oficiais de `shared/brand-assets/logos/school/`.
 - Para fundo escuro/pink: preferir variações `dark-*`.
 - Para fundo claro: preferir variações `light-*`.
-- Regra de composição: **preferir 1 LA oficial dominante por card**, grande, sangrado/cortado e integrado ao fundo.
-- Variações são permitidas, mas com parcimônia:
-  - no máximo 1 LA secundário pequeno quando a composição pedir;
-  - nunca repetir vários LAs soltos como padrão/textura;
-  - nunca transformar o LA em “confete” decorativo;
-  - se a referência ouro não usa repetição, não repetir.
-- O LA deve funcionar como massa gráfica/coadjuvante, não competir com título, foto ou CTA.
-- Opacidade sugerida do LA dominante: `6%–14%`; secundário, quando existir: `4%–8%`.
+- Tratar o símbolo LA como elemento de composição, não como marca d’água fixa.
+- Variar posição, escala, corte, opacidade e versão do SVG conforme a direção do card.
+- Pode ser gigante, vazado, colorido/transparente, cortado, saindo pelo topo/lateral/rodapé, atrás de foto, halftone, glow ou forma.
+- Pode não aparecer em alguns cards se a composição respirar melhor sem ele.
+- Antes de renderizar, definir a função do símbolo card a card. Se o preview mostrar LA sempre no mesmo canto/tamanho, QA reprova.
+- O LA deve parecer parte da direção de arte, não carimbo nem repetição mecânica.
 
 ## Carrossel contínuo / emendado
 
@@ -81,6 +79,7 @@ Para testes avançados, pode criar carrossel com sensação de tela única recor
 
 - `LA` digitado com fonte comum.
 - Vários LAs soltos espalhados pela arte sem função compositiva.
+- LA sempre no mesmo lado/tamanho ao longo do carrossel, como se fosse template.
 - Cream/bege `#F5F1EC` como tema School v2.
 - Pink antigo `#E91E63`.
 - Gold badge como cor de marca.
@@ -95,9 +94,12 @@ Para testes avançados, pode criar carrossel com sensação de tela única recor
 - [ ] Refs ouro abertas/comparadas.
 - [ ] Logo/SVG oficial usado, não reconstruído.
 - [ ] Watermark usa símbolo oficial, nunca texto `LA`.
-- [ ] LA aparece como massa gráfica coerente — preferencialmente 1 dominante, não vários soltos.
+- [ ] LA aparece como massa gráfica coerente, com variação real de direção entre os cards.
 - [ ] Cores e fontes corretas.
 - [ ] Texto legível no mobile.
 - [ ] Numeração consistente quando for carrossel.
 - [ ] CTA claro.
+- [ ] A capa dá vontade de passar pro lado.
+- [ ] O preview grid parece campanha, não template.
+- [ ] Isso faz o olho brilhar.
 - [ ] PNGs finais exportados e revisados.
