@@ -54,17 +54,19 @@ O `LA` da School **não é texto**. É o símbolo oficial da logo.
 - Usar os SVGs oficiais de `shared/brand-assets/logos/school/`.
 - Para fundo escuro/pink: preferir variações `dark-*`.
 - Para fundo claro: preferir variações `light-*`.
-- O símbolo solo pode aparecer em múltiplos tamanhos:
-  - gigante cortado na lateral;
-  - translúcido atrás de foto;
-  - pequeno repetido como textura;
-  - rotacionado/sangrado fora da tela;
-  - combinado com halftone ou pink blob.
-- Opacidade sugerida: `5%–18%`, ajustando pela legibilidade.
+- Regra de composição: **preferir 1 LA oficial dominante por card**, grande, sangrado/cortado e integrado ao fundo.
+- Variações são permitidas, mas com parcimônia:
+  - no máximo 1 LA secundário pequeno quando a composição pedir;
+  - nunca repetir vários LAs soltos como padrão/textura;
+  - nunca transformar o LA em “confete” decorativo;
+  - se a referência ouro não usa repetição, não repetir.
+- O LA deve funcionar como massa gráfica/coadjuvante, não competir com título, foto ou CTA.
+- Opacidade sugerida do LA dominante: `6%–14%`; secundário, quando existir: `4%–8%`.
 
 ## O que NÃO usar
 
 - `LA` digitado com fonte comum.
+- Vários LAs soltos espalhados pela arte sem função compositiva.
 - Cream/bege `#F5F1EC` como tema School v2.
 - Pink antigo `#E91E63`.
 - Gold badge como cor de marca.
@@ -79,6 +81,7 @@ O `LA` da School **não é texto**. É o símbolo oficial da logo.
 - [ ] Refs ouro abertas/comparadas.
 - [ ] Logo/SVG oficial usado, não reconstruído.
 - [ ] Watermark usa símbolo oficial, nunca texto `LA`.
+- [ ] LA aparece como massa gráfica coerente — preferencialmente 1 dominante, não vários soltos.
 - [ ] Cores e fontes corretas.
 - [ ] Texto legível no mobile.
 - [ ] Numeração consistente quando for carrossel.
