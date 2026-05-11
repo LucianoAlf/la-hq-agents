@@ -152,7 +152,7 @@ Quando Luna gerar imagens, esse é o universo visual. Quando Theo escrever copy,
 | **Coragem** | Rasgar a partitura | Ousar na técnica | Brincar sem medo | Inovar no cuidado |
 | **Excelência** | Sagrado sem meio-termo | Pixel por pixel | Profissional sem ser chato | Ciência com coração |
 | **Tom** | Grito, fogo, alma | Direto, técnico, atitude | Divertido, confiante | Acolhedor, científico |
-| **Cor** | Vermelho/Preto | Pink #E91E63 | 4 cores do catavento | Roxo #3D1A6E |
+| **Cor** | Vermelho/Preto | Pink #E91451 | 4 cores do catavento | Roxo #3D1A6E |
 
 ---
 

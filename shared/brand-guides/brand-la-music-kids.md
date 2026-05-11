@@ -100,27 +100,48 @@ diversão · brincando · descoberta · ritmo · melodia · primeiro passo · m�
 
 ### Tipografia
 
-> **Atualização Abril 2026:** A marca migrou de Baloo 2 / Nunito para suas fontes proprietárias oficiais. Fontes antigas (Baloo 2, Nunito) estão **obsoletas** — não usar mais.
+> **Atualização Abril 2026 (v3):** A marca migrou de Baloo 2 / Nunito (v1) e depois Bubbleboddy Neue / Daydream (v2) para a família **Volkswagen FREE** com 7 pesos + **Madelina Script**. Fontes anteriores estão **obsoletas** — não usar mais.
+>
+> ⚠️ **Importante:** a família "Volkswagen" que usamos é uma fonte **free**, criada por autor independente — o nome coincide com a montadora mas **não é** a fonte proprietária VW Head/VW Text da Volkswagen AG. Arquivos corretos: ~32-40KB cada. Se você encontrar arquivos `VWHead-*.otf` ou `VWText-*.otf` de ~86KB+, **NÃO são nossas fontes** — aqueles pertencem à Volkswagen AG.
 
 **Fontes oficiais:**
 
-- **Display principal:** **Volkswagen Heavy** — robusta, arredondada, alta legibilidade. Usada em títulos, chamadas, corpo e interface.
-- **Display secundária (script):** **Madelina** — manuscrita/script. Usada pontualmente para palavras emocionais ou destaques fluidos (ex: "abertas!", "Chama!", "escutado"). Combina com Volkswagen Heavy criando contraste lúdico. Usar no máximo 1-2 vezes por peça — não empilhar.
-- **Corpo:** **Volkswagen Regular/Heavy conforme hierarquia** — para textos, descrições, legendas dentro da peça e CTAs.
-- **Logo:** usa desenho próprio — sempre usar os SVGs oficiais em `shared/design-systems/la-music-kids-v2/assets/logos/`, nunca recriar com fonte.
+- **Display e corpo:** família **Volkswagen** — arredondada, geométrica, alta legibilidade. Disponível em 7 pesos cobrindo todo o espectro tipográfico (títulos de impacto até descrições sutis).
+- **Script emocional:** **Madelina** — handlettering manuscrita. Usada pontualmente para palavras emocionais ou destaques fluidos (ex: "abertas!", "Chama!", "escutado"). Combina com Volkswagen criando contraste lúdico. Usar no máximo 1-2 vezes por peça — não empilhar.
+- **Logo:** usa desenho próprio (não Volkswagen nem Madelina) — sempre usar os SVGs em `logos-lahq/`, nunca recriar com fonte.
 
 **Localização dos arquivos na VPS:**
 ```
 /home/lahq/agents/shared/brand-assets/fonts/kids/
-├── Volkswagen-*.otf/ttf
-└── Madelina.*
+├── Volkswagen-Light.otf             (peso 300)
+├── Volkswagen-Regular.otf           (peso 400 — padrão)
+├── Volkswagen-Medium_Regular.ttf    (peso 500)
+├── Volkswagen-MediumIta.otf         (peso 500 italic)
+├── Volkswagen-Bold.otf              (peso 700)
+├── Volkswagen-BoldIta.otf           (peso 700 italic)
+├── Volkswagen-Heavy.otf             (peso 800)
+└── Madelina.ttf                     (script, peso único)
 ```
 
-**Pesos recomendados:**
-- Título principal: Volkswagen Heavy (800)
-- Subtítulo/destaque: Volkswagen Heavy/Bold (700-800)
-- Texto comum: Volkswagen Regular (400-600)
-- Acento emocional: Madelina (uso pontual, 1-2x por peça)
+**Uso recomendado por peso:**
+
+| Contexto | Fonte | Peso CSS |
+|---|---|---|
+| Título principal (hero, 48-80px) | Volkswagen Heavy | 800 |
+| Headline secundário (36-44px) | Volkswagen Heavy | 800 |
+| Subtítulo (24-32px) | Volkswagen Bold | 700 |
+| H3 / seção (18-22px) | Volkswagen Bold | 700 |
+| Texto comum / body (15-17px) | Volkswagen Regular | 400 |
+| Ênfase no corpo (`<strong>`) | Volkswagen Medium | 500 |
+| Descrição sutil (11-13px) | Volkswagen Light | 300 |
+| Citação em itálico | Volkswagen MediumIta | 500 italic |
+| Acento emocional (1-2x por peça) | Madelina | 400 |
+
+**Combinação clássica da marca (combo matrícula):**
+```
+MATRÍCULAS (Volkswagen Heavy, uppercase) + abertas! (Madelina, amarelo)
+```
+
 
 ### Elementos gráficos
 
@@ -142,11 +163,11 @@ Características:
 
 **5. Outline "4" translúcido (marca d'água)** — o "4" do logo aparece gigante no fundo (60-90% da altura da peça), em tom próximo do fundo com baixíssima opacidade (5-15%). Reforça identidade sem poluir. Não pode competir com o conteúdo.
 
-**6. Blob-handle @lamusickids (topo da peça)** — forma irregular vermelha (#ED3237) no topo com o handle `@lamusickids` em texto amarelo ou branco. Assinatura de autoria característica da marca. Posição: topo-centro ou topo-direita. Tipografia: Volkswagen Heavy uppercase, 16-22px.
+**6. Blob-handle @lamusickids (topo da peça)** — forma irregular vermelha (#ED3237) no topo com o handle `@lamusickids` em texto amarelo ou branco. Assinatura de autoria característica da marca. Posição: topo-centro ou topo-direita. Tipografia: Volkswagen Bold uppercase, 16-22px.
 
 **7. Badge vermelho com texto amarelo** — elemento retangular forte, fundo vermelho (#ED3237), texto amarelo (#FFF212) em Volkswagen Heavy uppercase. Usado em anúncios/destaques como "MATRÍCULAS". Pode ter leve inclinação e sombra projetada.
 
-**8. Pill outline CTA** — botão estilo pílula com borda branca outline (2-3px) e fundo transparente. Usado como CTA secundário: "LEIA A LEGENDA", "CONFIRA NA LEGENDA". Texto em branco, Volkswagen Heavy uppercase com letterspacing.
+**8. Pill outline CTA** — botão estilo pílula com borda branca outline (2-3px) e fundo transparente. Usado como CTA secundário: "LEIA A LEGENDA", "CONFIRA NA LEGENDA". Texto em branco, Volkswagen Bold uppercase com letterspacing.
 
 **9. Emojis musicais** — com moderação (🎵🎸🥁, máx 1-2 por peça).
 
@@ -186,7 +207,7 @@ A LA Music Kids opera com 7 superfícies de fundo. O tema é escolhido pelo tipo
 
 ### FAZER ✅
 - Usar as 4 cores do catavento equilibradamente
-- Volkswagen Heavy / Madelina em materiais digitais
+- Volkswagen + Madelina em materiais digitais
 - Ondas coloridas (curved water shapes) como assinatura visual
 - Comunicar com pais em tom leve e confiante
 - Border-radius generoso (arredondado, amigável)
@@ -198,7 +219,7 @@ A LA Music Kids opera com 7 superfícies de fundo. O tema é escolhido pelo tipo
 - Cores fora da paleta (NUNCA pink da LA Music School ou roxo da SonoraMente)
 - Cores antigas inventadas: #FF6B35, #4ECDC4, #FFE66D, #FF6B9D — **NÃO são da marca**
 - Infantilizar a comunicação ("mundinho", "musiquinha", diminutivos)
-- Baloo 2, Nunito, Fiston Soft, Bubbleboddy, Daydream ou qualquer outra fonte — **fontes oficiais são Volkswagen Heavy e Madelina**
+- Baloo 2, Nunito, Fiston Soft, Bubbleboddy Neue, Daydream ou qualquer outra fonte — **fontes oficiais são família Volkswagen FREE + Madelina**. ⚠️ NÃO usar VW Head ou VW Text da Volkswagen AG (são arquivos diferentes, ~86KB+, proprietários)
 - Fontes serifadas ou angulares
 - Elementos agressivos, pontiagudos ou escuros demais
 - Misturar identidade com LA Music School
@@ -226,7 +247,7 @@ A LA Music Kids opera com 7 superfícies de fundo. O tema é escolhido pelo tipo
 ## Changelog
 
 **Abril 2026** — Atualizações pontuais baseadas em peças reais da marca e confirmações do Alf:
-- Tipografia: Baloo 2 / Nunito → **Volkswagen Heavy + Madelina** (fontes oficiais da marca, conforme DS HTML v2 confirmado pelo Alf)
+- Tipografia: Baloo 2 / Nunito (v1) → Bubbleboddy Neue + Daydream (v2, obsoleto) → **família Volkswagen FREE (7 pesos) + Madelina** (v3, fontes oficiais, arquivos em `fonts/kids/`)
 - Elementos gráficos: expandido o catálogo (adicionados dotted pattern, outline "4" translúcido, blob-handle vermelho, badge vermelho c/ texto amarelo, pill outline CTA) mantendo elementos originais (ondas coloridas, barra 4 cores, catavento, emojis, badges de faixa)
 - Nomenclatura: "ondas coloridas" clarificada como "curved water shapes / blobs orgânicos" (nome oficial do mercado via Canva)
 - Temas: expandido de 3 para 7 (adicionados Amarelo, Verde, Vermelho, Gradiente Quente — identificados em peças reais)
