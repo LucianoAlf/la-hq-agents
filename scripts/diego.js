@@ -43,9 +43,9 @@ const AGENT_IDS = {
 };
 
 const DS_PATHS = {
-  'la-music-school': '/home/lahq/agents/shared/design-systems/la-music-design-system.html',
-  'la-music-kids':   '/home/lahq/agents/shared/design-systems/la-music-kids-design-system.html',
-  'sonoramente':     '/home/lahq/agents/shared/design-systems/sonoramente-design-system.html',
+  'la-music-school': AGENTS_DIR + '/shared/design-systems/la-music-design-system.html',
+  'la-music-kids':   AGENTS_DIR + '/shared/design-systems/la-music-kids-design-system.html',
+  'sonoramente':     AGENTS_DIR + '/shared/design-systems/sonoramente-design-system.html',
 };
 
 // === FONTES LOCAIS POR MARCA (fix: Puppeteer não tem fontes instaladas) ===
