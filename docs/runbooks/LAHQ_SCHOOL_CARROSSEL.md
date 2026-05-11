@@ -31,11 +31,13 @@ Fonte da verdade para produzir carrosséis da **LA Music School** no pipeline LA
    - CTA claro, sem texto genérico demais.
 
 3. **Imagem / Luna**
-   - Para técnica/instrumento: ter pelo menos 1 foto real/cinemática forte é recomendado.
-   - Em carrosséis educativos School, preferir **1 foto hero grande** ou no máximo **2 cards com foto**.
-   - Não espalhar foto em todo card só porque existe asset; o resultado fica menos elegante.
+   - Para técnica/instrumento: fotos reais/cinemáticas são bem-vindas quando ajudam a peça.
+   - Não usar sempre o mesmo padrão de **4 fotos/collage** em todos os cards.
+   - Collage com 4 fotos pode funcionar, mas deve aparecer com parcimônia: no máximo em 1–2 cards do carrossel.
+   - Variar a solução visual: alternar foto grande hero, foto única recortada, card mais tipográfico e card sem foto.
+   - Uma foto grande e bem posicionada costuma ficar mais elegante do que quatro fotos pequenas repetidas.
    - Prompt em inglês, sem texto, sem logo, sem watermark.
-   - Identidade visual, tipografia e símbolo LA oficial podem sustentar os demais cards.
+   - Identidade visual, tipografia e símbolo LA oficial podem sustentar cards sem foto.
 
 4. **Montagem / Diego**
    - Usar Prompt local.
