@@ -1,0 +1,10 @@
+*.backup*
+*.backup-*
+*-backup-*
+node_modules/
+.env
+.env.local
+output/
+outputs/
+output-teste/
+*.log
