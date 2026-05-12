@@ -80,6 +80,21 @@ Estas peças são o benchmark de qualidade para novos outputs LA Music School. Q
 ### Uso operacional
 Antes de gerar uma peça LA Music School, comparar mentalmente com essas referências ouro. Se o output parecer limpo demais, genérico demais, ou com estética de IA/stock, reprovar e refazer.
 
+## Referência ouro — carrossel manifesto “O que é ser aluno da LA?”
+**Aprovado por Alf com nota 11 em 2026-05-12.**
+
+Arquivos:
+- Grid: `shared/design-systems/references/la-music-school-v2-gold/ref-v4-manifesto-ser-aluno-la-grid.jpg`
+- Lâminas: `shared/design-systems/references/la-music-school-v2-gold/v4-manifesto-ser-aluno-la/`
+
+### Regras extraídas da aprovação 11/11
+- Design forte não basta: a copy precisa beber no Manifesto LA Music.
+- “Música não é só aula” é eixo de posicionamento: transformação, sonho aceso, identidade, palco, coragem, escuta e excelência.
+- Fotos reais de alunos funcionam muito bem quando têm função narrativa; usar 1, 3 ou 4 fotos conforme a peça pedir, não por fórmula.
+- Em fotos com aluno, texto deve ficar em área segura — base/lateral/fundo negativo — sem cobrir rosto, boca, instrumento principal ou expressão.
+- Não repetir o mesmo layout: manter a alma da referência, não a forma exata.
+- O padrão vencedor foi: foto real + dark/pink premium + Prompt gigante + halftone orgânico + logo oficial + copy manifesto curta.
+
 ## Pacote oficial recebido — DS embedado + logos oficiais
 **Recebido de Alf em 2026-05-10**
 

@@ -65,6 +65,21 @@ Evite copy genérica:
 - Melhor: “Toca mais alto.”
 - Melhor: “Aqui, música vira identidade.”
 
+## Referência 11/11 — “O que é ser aluno da LA?”
+
+Alf aprovou a V4 manifesto como referência de identidade School.
+
+Arquivos no repo:
+- `shared/design-systems/references/la-music-school-v2-gold/ref-v4-manifesto-ser-aluno-la-grid.jpg`
+- `shared/design-systems/references/la-music-school-v2-gold/v4-manifesto-ser-aluno-la/`
+
+O que aprender dessa referência:
+- manter a alma, não copiar a forma;
+- usar fotos reais de alunos quando trouxerem verdade, palco, gesto ou identidade;
+- texto em foto fica em área segura, preferencialmente base/lateral, nunca no rosto/expressão;
+- copy deve beber no Manifesto: música não é só aula, é transformação; paixão/sonho aceso; empatia/escuta; coragem/palco; excelência sem frieza;
+- frases campeãs do padrão: “Aqui música não é só aula”, “A gente não fabrica músico. A gente revela identidade”, “Paixão vira prática vira palco”, “Empatia sem moleza. Excelência sem frieza.”
+
 ## Personalidade verbal
 
 A School é:
