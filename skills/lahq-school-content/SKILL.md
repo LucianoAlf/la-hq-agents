@@ -153,6 +153,8 @@ Use o sistema inteiro, não só card pink.
 - Pontos em degradê, mais densos nas bordas.
 - Nunca grid uniforme morto.
 - Pode ficar sobre foto, fundo dark ou pink.
+- Em cards com pessoa/foto em destaque, halftone/pontinhos é o recurso preferencial para dar linguagem School sem poluir rosto/corpo.
+- Os pontinhos devem aparecer como textura de borda, lateral, canto ou fundo; nunca cobrir demais rosto, boca, microfone ou expressão.
 
 ### 2. Marca d’água LA
 
@@ -160,6 +162,9 @@ Use o sistema inteiro, não só card pink.
 - Pode sangrar borda.
 - Variar posição, escala, opacidade e corte.
 - Deve parecer composição, não carimbo.
+- **Regra dura:** em card com pessoa/foto em destaque, não colocar LA gigante por cima de rosto, corpo, braço, mão, pescoço, microfone ou silhueta principal.
+- Se não houver máscara/recorte para colocar o LA realmente atrás da pessoa, não usar LA ali. Trocar por halftone/pontinhos, glow, chevrons, padrão de `+`, textura ou gradiente.
+- LA sobre pessoa só é aceitável se estiver claramente em área negativa/fundo, sem tocar a figura principal.
 
 ### 3. Texto sólido + outline
 
@@ -198,6 +203,7 @@ Use o sistema inteiro, não só card pink.
 - Foto deve vender música real: palco, instrumento, microfone, corpo, mão, professor/aluno, estúdio, performance.
 - Full-bleed quando precisa impacto.
 - Tratamento com contraste, vignette, luz pink/dark e textura.
+- Em foto com pessoa em destaque, preferir halftone/pontinhos, glow, textura, chevrons ou padrão de `+` no entorno da figura principal em vez de LA gigante.
 - Não usar foto corporativa/fria ou stock genérico.
 
 ## Temas visuais
@@ -270,6 +276,8 @@ Perguntas duras:
 - Parece LA Music School ou post genérico de escola de música?
 - A logomarca completa está no topo centralizado em todos os cards?
 - O símbolo `LA` de fundo virou carimbo repetido?
+- Existe LA gigante por cima de pessoa, rosto, corpo ou microfone? Se sim, reprovar.
+- Cards com pessoa/foto têm halftone/pontinhos/textura suficiente para parecer School sem colar logo na pessoa?
 - O card pink virou muleta?
 - A tipografia está fazendo direção de arte ou só preenchendo espaço?
 - Tem sólido + outline, hierarquia e ritmo tipográfico?
