@@ -1,6 +1,6 @@
 ---
 name: copy-redes-sociais
-description: Skill para escrever legendas de Instagram (carrosséis, posts, reels), incluindo ganchos, corpo, CTAs e hashtags, adaptando tom por marca. Use sempre que Theo escreve copy pra redes sociais.
+description: Skill para escrever legendas/copy de Instagram (carrosséis, posts/feed estático, stories, reels e vídeos), incluindo ganchos, corpo, CTAs e hashtags, adaptando tom por marca. Use sempre que Theo escreve copy pra redes sociais.
 ---
 
 # Copy para Redes Sociais
@@ -10,7 +10,7 @@ description: Skill para escrever legendas de Instagram (carrosséis, posts, reel
 |-------|------|--------|-------------|
 | briefing | documento | Nina | Sim |
 | marca | enum | Briefing | Sim |
-| formato | enum (carrossel, post, reel) | Briefing | Sim |
+| formato | enum (carrossel, post, feed estático, story, stories, reel, vídeo) | Briefing | Sim |
 | tema | string | Briefing | Sim |
 
 ## Saída
@@ -25,10 +25,16 @@ Tipos: pergunta provocativa, dado surpreendente, provocação, promessa
 Parágrafos curtos, emojis como bullets quando adequado, informação acionável
 
 ### CTA (final)
-Específico: "Salva pra praticar 🎵" | "Comenta qual dica precisava" | "Link na bio"
+Específico por formato:
+- Carrossel técnico: "Salva esse treino e testa hoje" | "Arrasta e pratica devagar"
+- Feed estático: "Link na bio" | "Chama no direct"
+- Reels/vídeos: "Comenta qual parte travou" | "Salva pra repetir depois"
+- Stories: CTA visual curto: "Arrasta", "Responde aqui", "Link na bio", "Chama no direct"
 
 ### Hashtags
-Máx 10. Mix: 3-4 volume alto + 3-4 nicho + 2-3 marca
+Normalmente 8–15. Instagram limita 30. Mix: marca + tema + nicho + localização.
+
+Se a legenda já tiver hashtags suficientes, não duplicar no array da publicação.
 
 ## Awareness Routing (do copy-squad)
 | Nível | Gancho |
@@ -47,9 +53,10 @@ Máx 10. Mix: 3-4 volume alto + 3-4 nicho + 2-3 marca
 ## Veto Conditions — NUNCA
 - NUNCA clichê ("venha fazer parte da família" PROIBIDO)
 - NUNCA gancho genérico
+- NUNCA copy abstrata quando o conteúdo for técnico. Se o tema é palhetada, falar de palheta, corda, BPM, pulso, ataque, mão direita/esquerda.
 - NUNCA misturar tom entre marcas
 - NUNCA sem CTA
-- NUNCA mais de 10 hashtags
+- NUNCA mais de 30 hashtags
 - NUNCA erro de português
 
 ## Checklist de Conclusão

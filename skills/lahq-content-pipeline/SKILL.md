@@ -17,6 +17,12 @@ Repo local:
 /root/.openclaw/workspace/repos/la-hq-agents
 ```
 
+Para copy/caption, hashtags, empacotamento e publicação Instagram, carregar também:
+
+- `skills/lahq-copy-publication/SKILL.md`
+
+Use essa skill quando o pedido envolver publicar, agendar, subir no Instagram, feed, stories, reels, vídeos, legendas, CTA ou hashtags.
+
 Antes de produzir:
 
 ```bash
